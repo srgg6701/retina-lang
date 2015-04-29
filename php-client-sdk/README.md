@@ -2,7 +2,7 @@ cortical.io
 ===========
 Welcome to the cortical.io Retina PHP client source code page.
 
-Release Version: 2.1.0
+Release Version: 2.2.0
 
 This page contains
 <UL>
@@ -58,6 +58,11 @@ http://www.cortical.io/developers_forum.html
 <B>v 2.1.0</B>
 * Initial release version.
 
+<B>v 2.2.0</B>
+* New endpoints added:
+  * Language Detection Endpoint.
+  * Classify Endpoint.
+  * Compare Bulk Endpoint
     
 ### License
 Copyright 2014 cortical.io GmbH.

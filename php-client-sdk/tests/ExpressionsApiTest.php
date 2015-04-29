@@ -80,18 +80,4 @@ class ExpressionsApiTest extends PHPUnit_Framework_TestCase
             $this->assertTrue(count($termList[0]->fingerprint->positions) > 0);
         }
     }
-
-    public function testSimilarTermsBit()
-    {
-        $termList = self::$expressionsApi->getSimilarTermsForSinglePosition(12, TestConfiguration::$RETINA_NAME);
-        $this->assertTrue(count($termList) == 10);
-        foreach ($termList as $term) {
-            $this->assertNotNull($term->term);
-            $this->assertNotNull($term->df);
-            $this->assertNotNull($term->score);
-            $this->assertNotNull($term->pos_types);
-            $this->assertNotNull($term->fingerprint);
-        }
-    }
-
 } 

@@ -11,7 +11,7 @@ require_once("../ApiClient.php");
 class TestConfiguration
 {
     public static $API_KEY = "<your api key>";
-    public static $BASE_PATH = "http://<api url>/rest";
+    public static $BASE_PATH = "http://api.cortical.io/rest";
     public static $RETINA_NAME = "en_associative";
 
     public function getApiClient()
