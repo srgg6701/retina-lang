@@ -353,7 +353,50 @@ class ExpressionsApi
             'Array[Array[Term]]');
         return $responseObject;
 
-    }
+      }
+  /**
+	 * getSimilarTermsForSinglePosition
+	 * Get similar terms for single bit position
+   * position, int: A position in the retina space. (required)
+   * retina_name, string: The retina name (required)
+   * @return Array[Term]
+	 */
 
+   public function getSimilarTermsForSinglePosition($position, $retina_name) {
+
+  		//parse inputs
+  		$resourcePath = "/expressions/similar_terms_bit";
+  		$resourcePath = str_replace("{format}", "json", $resourcePath);
+  		$method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+      $headerParams['Accept'] = 'application/json';
+      $headerParams['Content-Type'] = 'application/json';
+
+      if($retina_name != null) {
+  		  $queryParams['retina_name'] = $this->apiClient->toQueryValue($retina_name);
+  		}
+  		if($position != null) {
+  		  $queryParams['position'] = $this->apiClient->toQueryValue($position);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+  		$response = $this->apiClient->callAPI($resourcePath, $method,
+  		                                      $queryParams, $body,
+  		                                      $headerParams);
+
+
+      if(! $response){
+          return null;
+        }
+
+  		$responseObject = $this->apiClient->deserialize($response,
+  		                                                'Array[Term]');
+  		return $responseObject;
+
+      }
+  
 }
 

@@ -90,4 +90,15 @@ EOT;
 
         }
     }
+
+    public function testDetectLanguage()
+    {
+        $language = self::$textApi->getLanguage(self::$inputText);
+        $this->assertNotEmpty($language);
+        $this->assertEquals($language->language, "English");
+        $this->assertEquals($language->iso_tag, "en");
+        $this->assertEquals($language->wiki_url, "http://en.wikipedia.org/wiki/English_language");
+    }
+
+
 }

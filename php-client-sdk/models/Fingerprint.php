@@ -15,10 +15,9 @@ class Fingerprint
 
     );
 
-    /**
-     * Get Fingerprint Positions.
-     */
-    public $positions; // array[int]
-
-}
+  /**
+  * The positions of a Fingerprint
+  */
+  public $positions; // array[int]
+  }
 
