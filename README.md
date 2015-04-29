@@ -2,9 +2,7 @@ cortical.io
 ===========
 Welcome to the cortical.io Retina PHP client source code page.
 
-Release Version: 2.1.0-BETA
-
-<B>Please Note - This is only a beta version.</B>
+Release Version: 2.2.0
 
 This page contains
 <UL>
@@ -33,8 +31,7 @@ To use the API you will need to obtain an <a href="http://www.cortical.io/develo
 
 ### How to use/build
 * You will need PHP (version 5.6.3 has been tested).
-* Install <a href="https://phpunit.de/getting-started.html">PHPUnit</a> (version 4.5.0 has been tested).  This library installation is optional as it is required only to run unit tests.
- * The unit tests should be executed using the command line - e.g. `phpunit RetinasAPITest.php`
+* Install <a href="https://phpunit.de/getting-started.html">PHPUnit</a>, this is library for run integration tests (optional installation).
 * Clone all the sources from our Github repository.
 
 You should now be able to use the client in the following way (obtaining a semantic representation of the term *apple*):
@@ -52,15 +49,20 @@ You should now be able to use the client in the following way (obtaining a seman
 ```
 
 For further documentation about the Retina-API and information on cortical.io's 'Retina' technology please see: 
-http://www.cortical.io/developers_tutorials.html. Also the `tests` folder contains more examples of how to use the client. 
+http://www.cortical.io/developers_tutorials.html. Also the `tests` folder contains more examples of how to use client. 
 
 If you have any questions or problems please visit our forum:
 http://www.cortical.io/developers_forum.html
 
 ### Change Log
-<B>v 2.1.0-BETA</B>
-* Initial release version.
+<B>v 2.2.0</B>
+* New endpoints added:
+  * Language Detection Endpoint.
+  * Classify Endpoint.
+  * Compare Bulk Endpoint.
 
+<B>v 2.1.0</B>
+* Initial release version.
     
 ### License
 Copyright 2014 cortical.io GmbH.
