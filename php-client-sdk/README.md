@@ -55,14 +55,14 @@ If you have any questions or problems please visit our forum:
 http://www.cortical.io/developers_forum.html
 
 ### Change Log
-<B>v 2.1.0</B>
-* Initial release version.
-
 <B>v 2.2.0</B>
 * New endpoints added:
   * Language Detection Endpoint.
   * Classify Endpoint.
-  * Compare Bulk Endpoint
+  * Compare Bulk Endpoint.
+
+<B>v 2.1.0</B>
+* Initial release version.
     
 ### License
 Copyright 2014 cortical.io GmbH.
