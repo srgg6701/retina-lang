@@ -57,7 +57,47 @@ class CompareApi
             'Metric');
         return $responseObject;
 
-    }
+      }
+  /**
+	 * compareBulk
+	 * Bulk compare
+   * body, ExpressionOperation: Bulk comparison of elements 2 by 2 (required)
+   * retina_name, string: The retina name (required)
+   * @return Array[Metric]
+	 */
 
+   public function compareBulk($body, $retina_name) {
+
+  		//parse inputs
+  		$resourcePath = "/compare/bulk";
+  		$resourcePath = str_replace("{format}", "json", $resourcePath);
+  		$method = "POST";
+      $queryParams = array();
+      $headerParams = array();
+      $headerParams['Accept'] = 'application/json';
+      $headerParams['Content-Type'] = 'application/json';
+
+      if($retina_name != null) {
+  		  $queryParams['retina_name'] = $this->apiClient->toQueryValue($retina_name);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+  		$response = $this->apiClient->callAPI($resourcePath, $method,
+  		                                      $queryParams, $body,
+  		                                      $headerParams);
+
+
+      if(! $response){
+          return null;
+        }
+
+  		$responseObject = $this->apiClient->deserialize($response,
+  		                                                'Array[Metric]');
+  		return $responseObject;
+
+      }
+  
 }
 

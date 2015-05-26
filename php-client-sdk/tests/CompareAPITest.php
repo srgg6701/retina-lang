@@ -12,6 +12,7 @@ require_once('../CompareApi.php');
 class CompareAPITest extends PHPUnit_Framework_TestCase
 {
     private static $inputJSONarray = '[ { "term" : "apple" }, { "text" : "banana is a kind of fruit" } ]';
+    private static $inputJSOBulk = '[ [ { "term" : "car" }, { "term" : "cat" } ], [ { "term" : "jaguar" }, { "term" : "horse" } ]]';
     private static $oneTermInputJSONarray = "[ { \"term\" : \"apple\" } ]";
     private static $syntaxErrorJSONarray = "[ { \"term\" : \"apple\" }, { \"term\" : \"banana\"  ]";
     private static $compareApi;
@@ -56,5 +57,22 @@ class CompareAPITest extends PHPUnit_Framework_TestCase
             $expectedException = true;
         }
         $this->assertTrue($expectedException);
+    }
+
+    public function testCompareBulk()
+    {
+        $resultMetrics = self::$compareApi->compareBulk(self::$inputJSOBulk, TestConfiguration::$RETINA_NAME);
+
+        foreach ($resultMetrics as $resultMetric) {
+            $this->assertGreaterThan(0.1, $resultMetric->euclideanDistance);
+            $this->assertGreaterThan(0.1, $resultMetric->jaccardDistance);
+            $this->assertGreaterThan(20, $resultMetric->overlappingAll);
+            $this->assertGreaterThan(0.01, $resultMetric->overlappingLeftRight);
+            $this->assertGreaterThan(0.01, $resultMetric->overlappingRightLeft);
+            $this->assertGreaterThan(0.01, $resultMetric->cosineSimilarity);
+            $this->assertGreaterThan(320, $resultMetric->sizeLeft);
+            $this->assertGreaterThan(320, $resultMetric->sizeRight);
+            $this->assertGreaterThan(1, $resultMetric->weightedScoring);
+        }
     }
 }

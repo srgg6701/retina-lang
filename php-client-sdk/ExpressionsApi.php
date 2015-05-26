@@ -353,7 +353,6 @@ class ExpressionsApi
             'Array[Array[Term]]');
         return $responseObject;
 
-    }
-
+      }  
 }
 

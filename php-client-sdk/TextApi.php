@@ -245,5 +245,45 @@ class TextApi
 
     }
 
+
+
+    /**
+     * getLanguage
+     * Detect the language of a text
+     * @body, string: Your input text (UTF-8) (required)
+     * @return LanguageRest
+     */
+
+    public function getLanguage($body)
+    {
+
+        //parse inputs
+        $resourcePath = "/text/detect_language";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "POST";
+        $queryParams = array();
+        $headerParams = array();
+        $headerParams['Accept'] = 'application/json';
+        $headerParams['Content-Type'] = 'application/json';
+
+        //make the API Call
+        if (!isset($body)) {
+            $body = null;
+        }
+        $response = $this->apiClient->callAPI($resourcePath, $method,
+            $queryParams, $body,
+            $headerParams);
+
+
+        if (!$response) {
+            return null;
+        }
+
+        $responseObject = $this->apiClient->deserialize($response,
+            'LanguageRest');
+        return $responseObject;
+
+    }
+
 }
 

@@ -80,5 +80,4 @@ class ExpressionsApiTest extends PHPUnit_Framework_TestCase
             $this->assertTrue(count($termList[0]->fingerprint->positions) > 0);
         }
     }
-
 } 
