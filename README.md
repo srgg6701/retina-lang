@@ -25,7 +25,7 @@ The source code is split into the following:
 ### Dependencies
 cortical.io's Retina PHP client has been tested with PHP Version 5.6.3 and with all 2.x.x versions of <a href="http://api.cortical.io">cortical.io's api</a>.
 
-To use the API you will need to obtain an <a href="http://www.cortical.io/developers_apikey.html">api key</a>.
+To use the API you will need to obtain an <a href="http://www.cortical.io/resources_apikey.html">api key</a>.
 
 
 ### How to use/build
