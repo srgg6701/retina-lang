@@ -1,16 +1,15 @@
 $(function(){
-	console.log('default here');
+	// on submit form
 	$('#form-data').on('submit', function(event){
 		event.preventDefault();
 		var term = $('[name="data-entry"]',event.currentTarget).val();
-		console.log('data:', term);
-		$.ajax({
+		//console.log('data:', term);
+		$.ajax('/api/data.php',{
 			method:'post',
-			url:'/api/data.php',
 			data:{term:term}
-		}).success(function(data){
+		}).done(function(data){
 			console.log('data: ', data);
-		}).error(function(){
+		}).fail(function(){
 			console.log('error');
 		});
 	});
