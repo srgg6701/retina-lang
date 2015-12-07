@@ -25,7 +25,6 @@ class TermsApi
      * @max_results, int: Max results per page (optional) (optional)
      * @return Array[Term]
      */
-
     public function getTerm($term = null, $get_fingerprint = null, $retina_name, $start_index = null, $max_results = null)
     {
 
