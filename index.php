@@ -15,19 +15,17 @@ require_once 'config.php';
 </head>
 <body>
 <div class="container">
-  <h1 class="row">Hello, hunter for sense!</h1>
+  <h1 class="row">Hello, hunter for senses!</h1>
 </div>
 <hr/>
 <div class="container">
   <div class="row">
     <div id="content"></div>
   </div>
-  <div class="row">
-    <form id="form-data" class="form-inline">
-      <input class="form-control" placeholder="input a term here" type="text" name="data-entry" required="required" />
-      <button class="btn" id="btn-get-data" type="submit">Get data</button>
-    </form>
-  </div>
+  <form id="form-data" class="form-inline row">
+    <input class="form-control" placeholder="input a term here" type="text" name="data-entry" required="required" />
+    <button class="btn" id="btn-get-data" type="submit">Get data</button>
+  </form>
 </div>
 </body>
 </html>
