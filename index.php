@@ -15,14 +15,11 @@ require_once 'config.php';
 </head>
 <body>
 <div class="container">
-  <h1 class="row">Hello, hunter for senses!</h1>
+  <h1 class="row">Hello, hunter sense!</h1>
 </div>
 <hr/>
 <div class="container">
-  <div class="row">
-    <div id="content"></div>
-  </div>
-  <form id="form-data" class="form-inline row table">
+  <form id="form-data" class="form-inline row auto table">
     <input class="form-control wide" placeholder="input a term here" type="text" name="data_entry" />
     <section id="section-methods" class="padding10">
     	<label>
@@ -85,6 +82,14 @@ require_once 'config.php';
     </section>
     <button class="btn table btn-primary" id="btn-get-data" type="submit">Get data</button>
   </form>
+  <div class="row">
+    <hr/>
+    <h4 id="h4-results" class="clearfix">
+        <span class="pull-left">Results:</span>
+        <img class="pull-left" src="assets/images/ajax-loader_orig.gif" width="32" height="32"><button id="results-clear" class="invisible pull-right btn">clear</button></h4>
+    <div id="content" class="padding10 auto table"></div>
+  </div>
 </div>
+<div id="bg-visual"></div>
 </body>
 </html>

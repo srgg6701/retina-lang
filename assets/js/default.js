@@ -1,5 +1,12 @@
 $(function(){
-	var callMethod;
+	var callMethod,
+		$results_clear=$('#results-clear'),
+		$content=$('#content');
+
+	$results_clear.on('click', function(){
+		$content.html('');
+		$(this).addClass('invisible');
+	});
 	//
 	$('[name="api-method"]').on('click', function(){
 		callMethod=this.id;
@@ -26,14 +33,15 @@ $(function(){
 			alert(mess);
 			return false;
 		}
-
+		
 		var api_method = $checked[0].id,
 			retina_name = $('[name="retina_name"] option:selected').val(),
 			context_id = $('#context-id').val(),
 			start_index = $('#start-index').val(),
 			max_results = $('#max-results').val(),
 			pos_type = $('[name="pos_type"] option:selected').val(),
-			get_fingerprint = $('[name="get_fingerprint"] option:selected').val();
+			get_fingerprint = $('[name="get_fingerprint"] option:selected').val(),
+			$wait=$('#h4-results>img');
 		//console.log('data:', term);
 		$.ajax('/api/data.php',{
 			method:'post',
@@ -46,11 +54,19 @@ $(function(){
 				max_results:max_results,
 				pos_type:pos_type,
 				get_fingerprint:get_fingerprint
+			},
+			beforeSend: function() {
+				$content.html('');
+				$wait.fadeIn(300);
 			}
 		}).done(function(data){
 			console.log('data: ', data);
+			$content.html(data);
+			$results_clear.removeClass('invisible');
 		}).fail(function(){
 			console.log('error');
+		}).complete(function(){
+			$wait.fadeOut(300);
 		});
 	});
 });

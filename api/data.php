@@ -38,7 +38,7 @@ ob_start();
 $data='';
 try{
 	foreach($data_source as $i=>$position){
-		if($i) $data.=",";
+		if($i) $data.=", ";
 		echo $data.=$position;
 	}	//echo serialize($terms[0]->fingerprint->positions);
 }catch(Exception $e){
