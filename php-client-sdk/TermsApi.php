@@ -12,7 +12,9 @@ class TermsApi
 
     function __construct($apiClient)
     {
+        // ApiClient instance: $apiKey, $apiServer
         $this->apiClient = $apiClient;
+
     }
 
     /**

@@ -1,0 +1,45 @@
+@charset "utf-8";
+@media(max-width:768px){
+	.container{
+		padding-left:25px;
+		padding-right:25px;
+	}	
+}
+
+.btn.table,
+form.table{
+	display:table;
+	width:auto;
+}
+.visibility.none{
+	display:none;
+}
+.wide{
+	width:100% !important;
+}
+.padding10{
+	padding:10px;
+}
+
+#section-api_params{
+	margin-bottom:10px;
+	padding-left:0;
+	padding-top: 0;
+}
+#section-methods label{
+	margin-right:10px;
+}
+#section-methods label:hover{
+	background-color:#eee;
+	margin:-10px 0 -10px -10px;
+	padding:10px;
+}
+#section-methods input[type="radio"]{
+	margin-right:4px;
+}
+section.pull-left div{
+	margin-right:10px;
+}
+#results-length section input[type="text"]{
+	width:100px;
+}
