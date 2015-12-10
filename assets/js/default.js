@@ -33,7 +33,7 @@ $(function(){
 			alert(mess);
 			return false;
 		}
-		
+
 		var api_method = $checked[0].id,
 			retina_name = $('[name="retina_name"] option:selected').val(),
 			context_id = $('#context-id').val(),
