@@ -6,7 +6,12 @@ if(isset($_GET['option'])){
 	$method = isset($_GET['method']) ? $_GET['method'] : null;
 	$term = isset($_GET['term']) ? $_GET['term'] : null;
 	$template = TMPL_PATH.$option.'.php';
-	switch($option){
+	$className = $option;
+	if($className[strlen($className)-1]!='s')
+		$className.='s';
+	$className.='Api';
+	$data = (new $className($apiClient))->$getMethod();
+	/*switch($option){
 	    case "Retinas":
 			$data = (new RetinasApi($apiClient))->$getMethod();
 	        break;
@@ -29,7 +34,7 @@ if(isset($_GET['option'])){
 		case "Classify":
 			$data = (new ClassifyApi($apiClient))->$getMethod();
 			break;
-	}
+	}*/
 }
 ob_start();
 require_once APP_PATH.'view.php';
