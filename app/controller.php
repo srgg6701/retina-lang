@@ -30,3 +30,5 @@ if(isset($_GET['option'])){
 	//$terms = $termsApi->getTerm($term, true, $RETINA_NAME);
 	//$similarTerms = $termsApi->getSimilarTerms($term, null, null, null, $RETINA_NAME);
 }
+
+require_once APP_PATH.'view.php';

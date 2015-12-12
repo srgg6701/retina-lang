@@ -1,6 +1,7 @@
 <?php
-require_once 'api/api.php';
-require_once 'app/controller.php';
+require_once 'config.php';
+require_once API_PATH.'ApiClient.php';
+require_once APP_PATH.'controller.php';
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
