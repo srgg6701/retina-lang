@@ -1,6 +1,7 @@
 <?php
 require_once 'config.php';
-require_once API_PATH.'ApiClient.php';
+require_once PHP_CLIENT_PATH.'ApiClient.php';
+require_once API_PATH.'api.php';
 require_once APP_PATH.'controller.php';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -20,19 +21,20 @@ require_once APP_PATH.'controller.php';
     <ul class="nav navbar-nav pull-right">
     <?php
     foreach($menus as $menu):?>
-    <li><a href="/?method=<?php echo $menu;?>"><?php echo $menu;?></a></li>
+    <li><a href="/?option=<?php echo $menu;?>"><?php echo $menu;?></a></li>
   <?php
     endforeach;?>
     </ul>
     <h1 class="pull-left"><a href="/">Retina.api</a></h1>
   </nav>
 </div>
-<?php
+<div class="container">
+  <div class="row"><?php
 
-echo "<pre>";
-var_dump(array('terms'=>$terms));
-var_dump(array('similarTerms'=>$similarTerms));
-echo "</pre>";
-//echo serialize($termArr[0]->fingerprint->positions);?>
+  echo $content;
+
+?>
+  </div>
+</div>
 </body>
 </html>

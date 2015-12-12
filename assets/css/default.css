@@ -3,3 +3,14 @@ nav ul.nav li a{
     height: 70px;
     vertical-align: middle;
 }
+
+/* -------------------- */
+#form-query-params{
+    margin-bottom:20px;
+}
+#selects-common{
+}
+#selects-common >div{
+    float: left;
+    margin-right: 20px;
+}
