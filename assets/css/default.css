@@ -2,7 +2,7 @@ body>.container:first-child{
     border-bottom: solid 3px rgba(51, 122, 183, 0.65);
     margin-bottom: 20px;
 }
-body>.container:first-child >nav{
+body>.container:first-child nav{
     margin-bottom: 10px;
 }
 nav ul.nav li a{
@@ -14,7 +14,13 @@ nav .glyphicon-eye-close{
     font-size:0.9em;
     margin-right: 4px;
 }
+select[name="select-subsection"]{
+    margin-left:20px;/* Chrome all / Safari all *//* Firefox all *//* IE 10+ */
+}
 /* -------------------- */
+#content-box{
+    clear:both;
+}
 #content h2{
     margin-top:0;
     margin-bottom:20px;

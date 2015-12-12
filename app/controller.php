@@ -1,8 +1,9 @@
 <?php
-$template = $option = $section = $methodDefault = null;
+$template = $option = $section = $methodDefaul = $filter_name = $body = $POStags = $term = $context_id = $pos_type = $get_fingerprint	 = $retina_name = $start_index = $max_results = $image_scalar = $plot_shape	 = $image_encoding = $sparsity = null;
 if(isset($_GET['option'])){
+	$retina_name = (isset($_POST['retina_name'])) ?
+		$_POST['retina_name'] : 'en_associative';
 	$option=$_GET['option'];
-	$getMethod='get'.$option;
 	$method = isset($_GET['method']) ? $_GET['method'] : null;
 	$term = isset($_GET['term']) ? $_GET['term'] : null;
 	$template = TMPL_PATH.$option.'.php';
@@ -12,77 +13,12 @@ if(isset($_GET['option'])){
 		$methodDefault='get'.$className;
 	}
 	$className.='Api';
+	// it will be passed to model
 	$getData = new $className($apiClient);
-	// get sections
-	require_once APP_PATH . 'model.php';
-	$section = $sections[$option] || null;
-	$params = array('term',);
-	// extract methods
-	switch($option){
-	    case "Term":
-			switch($method){
-				case 'terms':
-				$data = $getData->$getMethod();
-					break;
-				case 'terms/contexts':
-					break;
-				case 'terms/similar_terms':
-					break;
-			}
-			break;
-	    case "Text":
-			switch($method){
-				case 'text':
-					break;
-				case 'text/keywords':
-					break;
-				case 'text/tokenize':
-					break;
-				case 'text/slices':
-					break;
-				case 'text/bulk':
-					break;
-				case 'text/detect_language':
-					break;
-			}
-			break;
-		case "Expressions":
-			switch($method){
-				case 'expressions':
-					break;
-				case 'expressions/contexts':
-					break;
-				case 'expressions/similar_terms':
-					break;
-				case 'expressions/bulk':
-					break;
-				case 'expressions/contexts/bulk':
-					break;
-				case 'expressions/similar_terms/bulk':
-					break;
-			}
-			break;
-		case "Compare":
-			switch($method){
-				case 'compare':
-					break;
-				case 'compare/bulk':
-					break;
-			}
-			break;
-		case "Image":
-			switch($method){
-				case 'image':
-					break;
-				case 'image/compare':
-					break;
-				case 'image/bulk':
-					break;
-			}
-			break;
-		default:
-			$data = $getData->$methodDefault();
-	}
+	// get sections & data
+	require_once APP_PATH.'model.php';
+	// get aliases for active section
+	if(isset($sections[$option])) $section = $sections[$option];
 }
 ob_start();
 require_once APP_PATH.'view.php';

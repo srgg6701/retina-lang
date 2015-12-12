@@ -1,8 +1,10 @@
+<form class="form-inline clearfix" id="form-query-params">
 <?php
 if($option):?>
 	<h2 class="pull-left"><?php echo $option;?></h2><?php
-	if($section):?>
-<select class="pull-left" name="select-subsection">
+	if($section):
+		?>
+<select class="pull-left form-control" name="select-subsection">
 	<option selected="selected">-choose-</option>
 	<?php
 		foreach($section as $subsection):?>
@@ -13,8 +15,8 @@ if($option):?>
 <?php
 	endif;
 endif;?>
-<form class="form-inline clearfix" id="form-query-params">
-	<div id="selects-common" class="clearfix">
+	<div id="content-box">
+		<div id="selects-common" class="clearfix">
 		<div>
 			Response Content Type:
 		<?php require_once TMPL_PARTIALS_PATH.'select-response_content_type.php';?>
@@ -29,6 +31,7 @@ if($template) {
 	require_once $template;
 }
 ?>
+	</div>
 </form><?php
 echo "<pre>";
 var_dump($data);
