@@ -17,7 +17,7 @@ require_once APP_PATH.'controller.php';
 <body>
 <div class="container">
   <nav class="row navbar"><?php
-    $menus=array('Retinas','Terms','Text','Expressions','Compare','Image','Classify');?>
+    $menus=array('Retina','Term', 'Text','Expression','Compare','Image','Classify');?>
     <ul class="nav navbar-nav pull-right">
     <?php
     foreach($menus as $menu):?>
@@ -32,10 +32,7 @@ require_once APP_PATH.'controller.php';
 </div>
 <div class="container" id="content">
   <div class="row"><?php
-
-  echo $content;
-
-?>
+    echo $content;?>
   </div>
 </div>
 </body>

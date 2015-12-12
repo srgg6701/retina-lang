@@ -1,7 +1,17 @@
 <?php
 if($option):?>
-	<h2><?php echo $option;?></h2>
+	<h2 class="pull-left"><?php echo $option;?></h2><?php
+	if($section):?>
+<select class="pull-left" name="select-subsection">
+	<option selected="selected">-choose-</option>
+	<?php
+		foreach($section as $subsection):?>
+	<option value="<?php echo $subsection;?>"><?php echo $subsection;?></option>
+	<?php
+		endforeach;?>
+</select>
 <?php
+	endif;
 endif;?>
 <form class="form-inline clearfix" id="form-query-params">
 	<div id="selects-common" class="clearfix">
@@ -17,8 +27,8 @@ endif;?>
 <?php
 if($template) {
 	require_once $template;
-	//echo "<div>template: $template</div>";
-}?>
+}
+?>
 </form><?php
 echo "<pre>";
 var_dump($data);
