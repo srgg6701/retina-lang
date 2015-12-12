@@ -50,7 +50,7 @@ switch($option){
 				break;
 		}
 		break;
-	case "Expressions":
+	case "Expression":
 		switch($method){
 			case 'expressions':
 				$data = $getData->resolveExpression($body, $retina_name, $sparsity);
@@ -95,6 +95,7 @@ switch($option){
 				break;
 		}
 		break;
-	default:
-		$data = $getData->$methodDefault();
+	case "Classify":
+		$data = $getData->createCategoryFilter($filter_name, $body, $retina_name);
+		break;
 }

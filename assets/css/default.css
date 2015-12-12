@@ -5,6 +5,9 @@ body>.container:first-child{
 body>.container:first-child nav{
     margin-bottom: 10px;
 }
+body>.container:first-child nav h1{
+    position:relative;
+}
 nav ul.nav li a{
     display: table-cell;
     height: 70px;
@@ -16,19 +19,21 @@ nav .glyphicon-eye-close{
 }
 select[name="select-subsection"]{
     margin-left:20px;/* Chrome all / Safari all *//* Firefox all *//* IE 10+ */
+    margin-top: 20px;
 }
 /* -------------------- */
 #content-box{
     clear:both;
 }
 #content h2{
-    margin-top:0;
+    /* margin-top:0; */
     margin-bottom:20px;
 }
 #form-query-params{
     clear: both;
     margin-bottom:20px;
 }
+#powered{bottom: -14px;color: #999;font-size: 0.35em;left: 164px;position: absolute;white-space: nowrap;}
 #selects-common{
 }
 #selects-common >div{

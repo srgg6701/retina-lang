@@ -8,7 +8,8 @@ if(isset($_GET['option'])){
 	$term = isset($_GET['term']) ? $_GET['term'] : null;
 	$template = TMPL_PATH.$option.'.php';
 	$className = $option;
-	if($className[strlen($className)-1]!='s' && $className!='Text'){
+	$excludeNames = array('Text', 'Compare', 'Image', 'Classify');
+	if($className[strlen($className)-1]!='s' && !in_array($className, $excludeNames)){
 		$className.='s';
 		$methodDefault='get'.$className;
 	}
@@ -19,6 +20,8 @@ if(isset($_GET['option'])){
 	require_once APP_PATH.'model.php';
 	// get aliases for active section
 	if(isset($sections[$option])) $section = $sections[$option];
+}else{
+	$template = TMPL_PATH.'default.php';
 }
 ob_start();
 require_once APP_PATH.'view.php';

@@ -27,6 +27,7 @@ require_once APP_PATH.'controller.php';
     </ul>
     <h1 class="pull-left">
       <a href="/"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span><b>Retina</b>.client</a>
+      <div id="powered">Powered by <a href="http://cortical.io">cortical.io</a></div>
     </h1>
   </nav>
 </div>

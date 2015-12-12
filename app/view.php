@@ -13,25 +13,26 @@ if($option):?>
 		endforeach;?>
 </select>
 <?php
-	endif;
-endif;?>
+	endif;?>
 	<div id="content-box">
 		<div id="selects-common" class="clearfix">
-		<div>
-			Response Content Type:
-		<?php require_once TMPL_PARTIALS_PATH.'select-response_content_type.php';?>
-		</div>
-		<div>
-			Retina name:
-		<?php require_once TMPL_PARTIALS_PATH.'select-retina_name.php';?>
+			<div>
+				Response Content Type:
+				<?php require_once TMPL_PARTIALS_PATH.'select-response_content_type.php';?>
+			</div>
+			<div>
+				Retina name:
+				<?php require_once TMPL_PARTIALS_PATH.'select-retina_name.php';?>
+			</div>
 		</div>
 	</div>
-<?php
-if($template) {
+	<?php
+endif;
+//
+if($template):
 	require_once $template;
-}
+endif;
 ?>
-	</div>
 </form><?php
 echo "<pre>";
 var_dump($data);
