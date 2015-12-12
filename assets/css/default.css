@@ -3,8 +3,15 @@ nav ul.nav li a{
     height: 70px;
     vertical-align: middle;
 }
-
+nav .glyphicon-eye-close{
+    font-size:0.9em;
+    margin-right: 4px;
+}
 /* -------------------- */
+#content h2{
+    margin-top:0;
+    margin-bottom:20px;
+}
 #form-query-params{
     margin-bottom:20px;
 }

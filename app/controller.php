@@ -1,36 +1,35 @@
 <?php
+$template = $option = null;
 if(isset($_GET['option'])){
-	$option='get'.$_GET['option'];
+	$option=$_GET['option'];
+	$getMethod='get'.$option;
 	$method = isset($_GET['method']) ? $_GET['method'] : null;
 	$term = isset($_GET['term']) ? $_GET['term'] : null;
-	switch($_GET['option']){
+	$template = TMPL_PATH.$option.'.php';
+	switch($option){
 	    case "Retinas":
-			$RetinasApi=new RetinasApi();
-			$data = $RetinasApi->$option();
+			$data = (new RetinasApi($apiClient))->$getMethod();
 	        break;
 	    case "Term":
-			$data = $termsApi->$method();
+			if($method)
+				$data = (new TermsApi($apiClient))->$method();
 			break;
 	    case "Text":
-			$data = $termsApi->$option();
+			$data = (new TextApi($apiClient))->$getMethod();
 			break;
 		case "Expression":
-			$data = $termsApi->$option();
+			$data = (new ExpressionApi($apiClient))->$getMethod();
 			break;
 		case "Compare":
-			$data = $termsApi->$option();
+			$data = (new CompareApi($apiClient))->$getMethod();
 			break;
 		case "Image":
-			$data = $termsApi->$option();
+			$data = (new ImageApi($apiClient))->$getMethod();
 			break;
 		case "Classify":
-			$data = $termsApi->$option();
+			$data = (new ClassifyApi($apiClient))->$getMethod();
 			break;
 	}
-
-	//$terms = $termsApi->getTerm($term, true, $RETINA_NAME);
-	//$similarTerms = $termsApi->getSimilarTerms($term, null, null, null, $RETINA_NAME);
-	echo "<h3>option=".$option."</h3>";
 }
 ob_start();
 require_once APP_PATH.'view.php';

@@ -4,4 +4,4 @@ $BASE_PATH = "http://api.cortical.io/rest";
 $RETINA_NAME = "en_associative";
 $apiClient = new APIClient($API_KEY, $BASE_PATH);
 //--------------------------------
-$termsApi = new TermsApi($apiClient);
+//$termsApi = new TermsApi($apiClient);

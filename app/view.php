@@ -1,3 +1,8 @@
+<?php
+if($option):?>
+	<h2><?php echo $option;?></h2>
+<?php
+endif;?>
 <form class="form-inline clearfix" id="form-query-params">
 	<div id="selects-common" class="clearfix">
 		<div>
@@ -9,6 +14,11 @@
 		<?php require_once TMPL_PARTIALS_PATH.'select-retina_name.php';?>
 		</div>
 	</div>
+<?php
+if($template) {
+	require_once $template;
+	//echo "<div>template: $template</div>";
+}?>
 </form><?php
 echo "<pre>";
 var_dump($data);

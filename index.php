@@ -17,7 +17,7 @@ require_once APP_PATH.'controller.php';
 <body>
 <div class="container">
   <nav class="row navbar"><?php
-    $menus=array('Retinas','Term','Text','Expression','Compare','Image','Classify');?>
+    $menus=array('Retinas','Terms','Text','Expressions','Compare','Image','Classify');?>
     <ul class="nav navbar-nav pull-right">
     <?php
     foreach($menus as $menu):?>
@@ -25,10 +25,12 @@ require_once APP_PATH.'controller.php';
   <?php
     endforeach;?>
     </ul>
-    <h1 class="pull-left"><a href="/">Retina.api</a></h1>
+    <h1 class="pull-left">
+      <a href="/"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span><b>Retina</b>.client</a>
+    </h1>
   </nav>
 </div>
-<div class="container">
+<div class="container" id="content">
   <div class="row"><?php
 
   echo $content;
