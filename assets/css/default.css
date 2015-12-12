@@ -1,0 +1,5 @@
+nav ul.nav li a{
+    display: table-cell;
+    height: 70px;
+    vertical-align: middle;
+}
