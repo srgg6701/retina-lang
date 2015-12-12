@@ -1,5 +1,5 @@
 <?php
-$template = $option = $section = null;
+$template = $option = $section = $methodDefault = null;
 if(isset($_GET['option'])){
 	$option=$_GET['option'];
 	$getMethod='get'.$option;
@@ -7,8 +7,10 @@ if(isset($_GET['option'])){
 	$term = isset($_GET['term']) ? $_GET['term'] : null;
 	$template = TMPL_PATH.$option.'.php';
 	$className = $option;
-	if($className[strlen($className)-1]!='s' && $className!='Text')
+	if($className[strlen($className)-1]!='s' && $className!='Text'){
 		$className.='s';
+		$methodDefault='get'.$className;
+	}
 	$className.='Api';
 	$getData = new $className($apiClient);
 	// get sections
@@ -78,6 +80,8 @@ if(isset($_GET['option'])){
 					break;
 			}
 			break;
+		default:
+			$data = $getData->$methodDefault();
 	}
 }
 ob_start();
