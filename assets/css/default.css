@@ -9,13 +9,6 @@ body>.container:first-child nav h1{
     position:relative;
     margin-top: 16px;
 }
-main section.collapse{
-    background-color: #7AA8D0;
-    border-radius: 4px;
-    color: white;
-    margin-bottom: 5px;
-    padding: 15px;
-}
 nav ul.nav li a{
     display: table-cell;
     height: 70px;
@@ -52,6 +45,17 @@ span.glyphicon.glyphicon-question-sign{
     max-height: 100%;
     max-width:600px;
     width:100%;
+}
+#answers section.collapse{
+    background-color: #7AA8D0;
+    border-radius: 4px;
+    color: white;
+    margin-bottom: 5px;
+    padding: 15px;
+}
+#answers section.collapse h4{
+    font-weight:900;
+    margin-top:0;
 }
 #content-box{
     clear:both;

@@ -16,36 +16,24 @@
 		endif; ?>
 		<div id="content-box">
 			<div id="selects-common" class="clearfix">
-				<div>
-					Response Content Type:
-					<?php require_once TMPL_PARTIALS_PATH . 'select-response_content_type.php';
-					?><span data-ask-target="description-responseContentType"
-							class="glyphicon glyphicon-question-sign"></span>
-				</div>
-				<div>
-					Retina name:
-					<?php require_once TMPL_PARTIALS_PATH . 'select-retina_name.php';
-					?><span data-ask-target="description-retina_name" class="glyphicon glyphicon-question-sign"></span>
-				</div>
+				<?php
+				setSelectBlock("Response Content Type", "select-response_content_type", "description-responseContentType");
+				setSelectBlock("Retina name", "select-retina_name", "description-retina_name");?>
 			</div>
 		</div>
 		<main>
 			<div id="answers">
-				<section id="description-responseContentType" class="collapse">
-					<p>Defines what type of data will come from the server. Currently it is only JSON.</p>
-				</section>
-				<section id="description-retina_name" class="collapse">
-					<p>Retina used for word space models. It allows to compute distances between terms, which can be
-						used to determine the degree of similarity between terms.</p>
-
+				<?php
+				setHelpSections("description-responseContentType", "Response Content Type", "<p>Defines what type of data will come from the server. Currently it is only JSON.</p>");
+				setHelpSections("description-retina_name", "Retina Name", "<p>Retina used for word space models. It allows to compute distances between terms, which can be used to determine the degree of similarity between terms.</p>
 					<p>There are two types of retina:</p>
 					<ol>
 						<li>en_synonymous</li>
 						<p>An english language retina focusing on synonymous similarity.</p>
 						<li>en_associative</li>
 						<p>An english language retina balancing synonymous and associative similarity.</p>
-					</ol>
-				</section>
+					</ol>");
+				?>
 			</div>
 		</main>
 		<?php
