@@ -1,5 +1,5 @@
-<form class="form-inline clearfix" id="form-query-params">
-	<?php
+<form class="form-inline clearfix" id="form-query-params" method="post">
+	<?php	//  action="?option=<?php echo $option;
 	if ($option):?>
 		<h2 class="pull-left"><?php echo $option; ?></h2><?php
 		if ($section):
@@ -22,7 +22,53 @@
 			</div>
 		</div>
 		<main>
-			<div id="answers">
+			<div id="data-answer">
+				<h4>Data</h4>
+				<?php
+				if ($template):
+					require_once $template;
+				endif;
+				switch($option){
+					case "Retina":
+						outputContentData($data[0]);
+						/*	array(1) {
+						  [0]=>
+						  object(Retina)#4 (5) {
+							["retinaName"]=>
+							string(14) "en_associative"
+							["numberOfTermsInRetina"]=>
+							int(854523)
+							["numberOfRows"]=>
+							int(128)
+							["numberOfColumns"]=>
+							int(128)
+							["description"]=>
+							string(75) "An English language retina balancing synonymous and associative similarity."
+						  }
+						}	*/
+						break;
+					case "Term":
+
+						break;
+					case "Text":
+
+						break;
+					case "Expression":
+
+						break;
+					case "Compare":
+
+						break;
+					case "Image":
+
+						break;
+					case "Classify":
+
+						break;
+				}
+				?>
+			</div>
+			<div id="help-contents">
 				<?php
 				setHelpSections("description-responseContentType", "Response Content Type", "<p>Defines what type of data will come from the server. Currently it is only JSON.</p>");
 				setHelpSections("description-retina_name", "Retina Name", "<p>Retina used for word space models. It allows to compute distances between terms, which can be used to determine the degree of similarity between terms.</p>
@@ -36,20 +82,24 @@
 				?>
 			</div>
 		</main>
-		<?php
-	endif; ?>
 	<div class="container">
 		<div class="row">
-			<?php
-			if ($template):
-				require_once $template;
-			endif;
-			echo "<pre>";
-			var_dump($data);
-			//var_dump(array('terms'=>$terms));
-			//var_dump(array('similarTerms'=>$similarTerms));
-			echo "</pre>"; ?>
+<pre id="pre-raw-data"><h4>show raw data</h4><section class="collapse"><span>+</span><?php
+var_dump($data);
+?></section>
+</pre>
 			<button type="submit" class="btn">Get data!</button>
 		</div>
 	</div>
+	<input type="hidden" name="option" value="<?php echo $option;?>"/>
+	<?php
+		else:?>
+	<main>
+	<?php
+			if ($template):
+				require_once $template;
+			endif;?>
+	</main>
+	<?php
+	endif; ?>
 </form>

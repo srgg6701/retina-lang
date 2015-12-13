@@ -14,9 +14,47 @@ nav ul.nav li a{
     height: 70px;
     vertical-align: middle;
 }
+pre > h4:first-child{
+    color: brown;
+    cursor: pointer;
+    margin-top: 0;
+}
 nav .glyphicon-eye-close{
     font-size:0.9em;
     margin-right: 4px;
+}
+section.collapse{
+    position: relative;    
+}
+section.collapse > span:first-child{
+    background-color: black;
+    border-radius: 50%;
+    color:white;
+    cursor:default;
+    display: table-cell;
+    font-size: 1.3em;
+    height: 21px;
+    line-height: 17px;
+    opacity: 0.25;
+    position:absolute;
+    right: 5px;
+    text-align: center;
+    top: 6px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transition:opacity 0.2s ease;
+    vertical-align: middle;
+    width: 21px;
+}
+section.collapse > span:first-child:hover{
+    opacity:1;
+}
+pre section.collapse > span:first-child{
+    font-size: 1.5em;
+    right: -3px;
+    top: -32px;
 }
 select[name="select-subsection"]{
     margin-left:20px;/* Chrome all / Safari all *//* Firefox all *//* IE 10+ */
@@ -36,7 +74,19 @@ span.glyphicon.glyphicon-question-sign{
     margin-top:15px;
 }
 /* -------------------- */
-#answers{
+#data-answer{
+    background-color: aliceblue;
+    border-radius: 4px;
+    padding:15px;
+}
+#data-answer h4{
+    font-weight:bold;
+}
+#data-answer > h4:first-child{
+    color: #337AB7;
+    margin-top:0;
+}
+#help-contents{
     /* background-color: aliceblue; */
     position:absolute;
     bottom:0;
@@ -47,46 +97,24 @@ span.glyphicon.glyphicon-question-sign{
     max-width:600px;
     width:100%;
 }
-#answers section.collapse{
+#help-contents section.collapse{
     background-color: #7AA8D0;
     border-radius: 4px;
     color: white;
     margin-bottom: 5px;
     opacity: 0.5;
     padding: 15px;
-    position: relative;
     transition:opacity 0.3s ease;
 }
-#answers section.collapse:hover{
+#help-contents section.collapse:hover{
     opacity:1;
 }
-#answers section.collapse h4{
+#help-contents section.collapse h4{
     font-weight:900;
     margin-top:0;
 }
-#answers section.collapse > span:first-child{
-    background-color: black;
-    border-radius: 50%;
-    cursor:default;
-    display: table-cell;
-    font-size: 1.3em;
-    height: 21px;
-    line-height: 17px;
-    opacity: 0.25;
-    position:absolute;
-    right: 5px;
-    text-align: center;
-    top: 6px;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transition:opacity 0.2s ease;
-    vertical-align: middle;
-    width: 21px;
-}
-#answers section.collapse > span:first-child:hover{
-    opacity:1;
+#pre-raw-data{
+    margin-top:15px;
 }
 #content-box{
     clear:both;

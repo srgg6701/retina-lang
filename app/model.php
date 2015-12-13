@@ -13,6 +13,10 @@ $sections = array( // get sections
 			);
 // extract methods
 switch($option){
+	case "Retina":
+		$data = $getData->getRetinas($retina_name);
+		$form_method = 'GET';
+		break;
 	case "Term":
 		switch($method){
 			case 'terms':
@@ -27,6 +31,7 @@ switch($option){
 				$data = $getData->getSimilarTerms($term, $context_id, $pos_type, $get_fingerprint, $retina_name, $start_index, $max_results);
 				break;
 		}
+		$form_method = 'GET';
 		break;
 	case "Text":
 		switch($method){
@@ -49,6 +54,7 @@ switch($option){
 				$data = $getData->getLanguage($body);
 				break;
 		}
+		$form_method = 'POST';
 		break;
 	case "Expression":
 		switch($method){
@@ -71,6 +77,7 @@ switch($option){
 				$data = $getData->getSimilarTermsForBulkExpressionContext($body, $context_id, $pos_type, $get_fingerprint, $retina_name, $start_index, $max_results, $sparsity);
 				break;
 		}
+		$form_method = 'POST';
 		break;
 	case "Compare":
 		switch($method){
@@ -81,6 +88,7 @@ switch($option){
 				$data = $getData->compareBulk($body, $retina_name);
 				break;
 		}
+		$form_method = 'POST';
 		break;
 	case "Image":
 		switch($method){
@@ -94,8 +102,10 @@ switch($option){
 				$data = $getData->getImageForBulkExpressions($body, $get_fingerprint, $retina_name, $image_scalar, $plot_shape, $sparsity);
 				break;
 		}
+		$form_method = 'POST';
 		break;
 	case "Classify":
 		$data = $getData->createCategoryFilter($filter_name, $body, $retina_name);
+		$form_method = 'POST';
 		break;
 }

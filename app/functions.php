@@ -1,5 +1,15 @@
 <?php
-
+function outputContentData($dataContent){
+	foreach($dataContent as $name=>$value):?>
+		<p><?php echo "<b>$name</b>: $value";?></p>
+	<?php
+	endforeach;
+}
+/**
+ * @param $header
+ * @param $file_name
+ * @param $data_ask_target
+ */
 function setSelectBlock($header, $file_name, $data_ask_target){
 	?>
 	<div>

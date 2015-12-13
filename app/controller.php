@@ -1,11 +1,11 @@
 <?php
 $template = $option = $section = $methodDefaul = $filter_name = $body = $POStags = $term = $context_id = $pos_type = $get_fingerprint	 = $retina_name = $start_index = $max_results = $image_scalar = $plot_shape	 = $image_encoding = $sparsity = null;
-if(isset($_GET['option'])){
+if(isset($_REQUEST['option'])){
 	$retina_name = (isset($_POST['retina_name'])) ?
 		$_POST['retina_name'] : 'en_associative';
-	$option=$_GET['option'];
-	$method = isset($_GET['method']) ? $_GET['method'] : null;
-	$term = isset($_GET['term']) ? $_GET['term'] : null;
+	$option=$_REQUEST['option'];
+	$method = isset($_REQUEST['method']) ? $_REQUEST['method'] : null;
+	$term = isset($_REQUEST['term']) ? $_REQUEST['term'] : null;
 	$template = TMPL_PATH.$option.'.php';
 	$className = $option;
 	$excludeNames = array('Text', 'Compare', 'Image', 'Classify');
