@@ -10,7 +10,7 @@ assets/fonts/glyphicons-halflings-regular.svg
 assets/fonts/glyphicons-halflings-regular.ttf
 assets/fonts/glyphicons-halflings-regular.woff
 assets/fonts/glyphicons-halflings-regular.woff2
-assets/js/bootstrap.min.js
+assets/js/libs/bootstrap.min.js
 assets/js/bootstrap/affix.js
 assets/js/bootstrap/alert.js
 assets/js/bootstrap/button.js
@@ -23,4 +23,4 @@ assets/js/bootstrap/scrollspy.js
 assets/js/bootstrap/tab.js
 assets/js/bootstrap/tooltip.js
 assets/js/bootstrap/transition.js
-assets/js/jquery.min.js
+assets/js/libs/jquery.min.js

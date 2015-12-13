@@ -7,6 +7,14 @@ body>.container:first-child nav{
 }
 body>.container:first-child nav h1{
     position:relative;
+    margin-top: 16px;
+}
+main section.collapse{
+    background-color: #7AA8D0;
+    border-radius: 4px;
+    color: white;
+    margin-bottom: 5px;
+    padding: 15px;
 }
 nav ul.nav li a{
     display: table-cell;
@@ -21,9 +29,33 @@ select[name="select-subsection"]{
     margin-left:20px;/* Chrome all / Safari all *//* Firefox all *//* IE 10+ */
     margin-top: 20px;
 }
+span.glyphicon.glyphicon-question-sign{
+    color: #7AA8D0;
+    font-size: 1.3em;
+    transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    -moz-transform: translateY(4px);
+    -o-transform: translateY(4px);
+    margin-left: 6px;
+}
 /* -------------------- */
+.btn{
+    margin-top:15px;
+}
+/* -------------------- */
+#answers{
+    background-color: aliceblue;
+    position:absolute;
+    bottom:0;
+    overflow: auto;
+    right: 4px;
+    max-height: 100%;
+    max-width:600px;
+    width:100%;
+}
 #content-box{
     clear:both;
+    margin-bottom: 15px;
 }
 #content h2{
     /* margin-top:0; */
@@ -32,11 +64,30 @@ select[name="select-subsection"]{
 #form-query-params{
     clear: both;
     margin-bottom:20px;
+    /* position: absolute; */
 }
-#powered{bottom: -14px;color: #999;font-size: 0.35em;left: 164px;position: absolute;white-space: nowrap;}
+#powered{
+    bottom: -18px;
+    color: #999;
+    font-size: 0.35em;
+    right: -55px;
+    position: absolute;
+    white-space: nowrap;
+}
 #selects-common{
 }
 #selects-common >div{
     float: left;
     margin-right: 20px;
+}
+#visual-circuits{
+    position: absolute;
+    /* background: url(../images/circuits.jpg) no-repeat; */
+    background-size: cover;
+    top: 0;
+    left: 0;
+    opacity: 0.1;
+    right: 0;
+    bottom: -11px;
+    z-index: -1;
 }

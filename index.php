@@ -11,8 +11,9 @@ require_once APP_PATH.'controller.php';
   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-theme.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/default.css">
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/libs/jquery.min.js"></script>
+  <script src="assets/js/libs/bootstrap.min.js"></script>
+  <script src="assets/js/default.js"></script>
 </head>
 <body>
 <div class="container">
@@ -29,6 +30,7 @@ require_once APP_PATH.'controller.php';
       <a href="/"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span><b>Retina</b>.client</a>
       <div id="powered">Powered by <a href="http://cortical.io">cortical.io</a></div>
     </h1>
+    <div id="visual-circuits"></div>
   </nav>
 </div>
 <div class="container" id="content">
