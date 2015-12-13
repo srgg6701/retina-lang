@@ -18,6 +18,7 @@ function setSelectBlock($header, $file_name, $data_ask_target){
 function setHelpSections($id, $header_text, $section_content="...coming soon..."){
 	?>
 	<section id="<?php echo $id;?>" class="collapse">
+		<span>+</span>
 		<h4><?php echo $header_text;?></h4>
 		<?php echo $section_content;?>
 	</section>
