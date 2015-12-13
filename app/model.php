@@ -12,7 +12,7 @@ $sections = array( // get sections
 				'Image'=>array('image','image/compare','image/bulk'),
 			);
 // extract methods
-switch($option){
+switch($option_post){
 	case "Retina":
 		$data = $getData->getRetinas($retina_name);
 		$form_method = 'GET';
