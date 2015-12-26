@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+</head>
+<body>
+<table class="fullwidth">
+          <thead>
+            <tr>
+            <th style="width: 100px; max-width: 100px">Parameter</th>
+            <th style="width: 310px; max-width: 310px">Value</th>
+            <th style="width: 200px; max-width: 200px">Description</th>
+            <th style="width: 100px; max-width: 100px">Parameter Type</th>
+            <th style="width: 220px; max-width: 230px">Data Type</th>
+            </tr>
+          </thead>
+          <tbody class="operation-params">
+
+          <tr><td class="code">retina_name</td>
+<td>
+  <select class="parameter" name="retina_name">
+    
+    
+    
+      
+        <option selected="" value="en_associative">en_associative (default)</option>
+      
+    
+      
+        <option value="en_synonymous">en_synonymous</option>
+      
+    
+  </select>
+</td>
+<td>The retina name</td>
+<td>query</td>
+<td><span class="model-signature">string</span></td></tr><tr><td class="code">term</td>
+<td>
+
+	
+		
+			<input class="parameter" minlength="0" name="term" placeholder="" type="text" value="">
+		
+	
+
+</td>
+<td>A term in the retina (optional)</td>
+<td>query</td>
+<td>
+	<span class="model-signature">string</span>
+</td>
+</tr><tr><td class="code">start_index</td>
+<td>
+
+	
+		
+			<input class="parameter" minlength="0" name="start_index" placeholder="" type="text" value="0">
+		
+	
+
+</td>
+<td>The start-index for pagination (optional)</td>
+<td>query</td>
+<td>
+	<span class="model-signature">integer</span>
+</td>
+</tr><tr><td class="code">max_results</td>
+<td>
+
+	
+		
+			<input class="parameter" minlength="0" name="max_results" placeholder="" type="text" value="10">
+		
+	
+
+</td>
+<td>Max results per page (optional)</td>
+<td>query</td>
+<td>
+	<span class="model-signature">integer</span>
+</td>
+</tr><tr><td class="code">get_fingerprint</td>
+<td>
+  <select class="parameter" name="get_fingerprint">
+    
+      
+      
+    
+    
+      
+        <option value="true">true</option>
+      
+    
+      
+        <option selected="" value="false">false (default)</option>
+      
+    
+  </select>
+</td>
+<td>Configure if the fingerprint should be returned as part of the results</td>
+<td>query</td>
+<td><span class="model-signature">boolean</span></td></tr></tbody>
+          </table>
+</body>
+</html>
