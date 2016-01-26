@@ -1,4 +1,4 @@
-<select class="pull-left form-control" name="select-subsection">
+<select class="pull-left form-control gap-left" name="select-subsection">
 	<option selected="selected">-choose-</option>
 	<?php
 	foreach ($section as $subsection):?>

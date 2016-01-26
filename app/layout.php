@@ -6,6 +6,7 @@ if ($option):?>
 	</h2>
 	<?php
 	if ($section) require_once TMPL_PARTIALS_PATH.'select-subsections.php';
+	require_once TMPL_PARTIALS_PATH.'input-term.php';
 	//
 	require_once TMPL_PARTIALS_PATH.'selects-common.php';
 	?>
@@ -44,6 +45,8 @@ if ($option):?>
 			?>
 		</div>
 	<?php
+	else:
+		require_once TMPL_PARTIALS_PATH.'form.php';
 	endif;
 	//
 	require_once TMPL_PARTIALS_PATH.'help.php';

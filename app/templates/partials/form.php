@@ -1,15 +1,3 @@
-<input class="form-control wide" placeholder="input a term here" type="text" name="data_entry" />
-<section id="section-methods" class="padding10">
-    <label>
-        <input type="radio" name="api-method" id="getTerm" required="required">Terms
-    </label>
-    <label>
-        <input type="radio" name="api-method" id="getContextsForTerm" required="required">Contexts
-    </label>
-    <label>
-        <input type="radio" name="api-method" id="getSimilarTerms" required="required">Similar terms
-    </label>
-</section>
 <section id="section-api_params" class="padding10 clearfix">
     <div class="visibility none">
         <br/>
@@ -22,7 +10,7 @@
             <div>start_index</div>
             <div><input class="form-control" id="start-index" type="text" value="0"></div>
         </section>
-        <section class="pull-left">            
+        <section class="pull-left gap-left">
             <div>max_results</div>
             <div><input class="form-control" minlength="0" id="max-results" type="text" value="10"></div>
         </section>
@@ -40,7 +28,7 @@
             </select>
         </div>
       </section>
-      <section class="pull-left">
+      <section class="pull-left gap-left">
         <div>get_fingerprint</div>
         <div>
             <select class="form-control" name="get_fingerprint">

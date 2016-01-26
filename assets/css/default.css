@@ -56,8 +56,9 @@ pre section.collapse > span:first-child{
     right: -3px;
     top: -32px;
 }
-select[name="select-subsection"]{
-    margin-left:20px;/* Chrome all / Safari all *//* Firefox all *//* IE 10+ */
+
+select[name="select-subsection"],
+input[name="data_entry"]{
     margin-top: 20px;
 }
 span.glyphicon.glyphicon-question-sign{
@@ -72,6 +73,9 @@ span.glyphicon.glyphicon-question-sign{
 /* -------------------- */
 .btn{
     margin-top:15px;
+}
+.gap-left{
+    margin-left:20px;
 }
 /* -------------------- */
 #data-answer{
