@@ -39,15 +39,12 @@ function setHelpSections($id, $header_text, $section_content="...coming soon..."
 }
 
 /**
- * @param $fieldsTypes
- * @param $tag
+ * @param $tag string is used in the template
+ * @param $dataArray
+ * @param bool|false $section
  */
-function setFieldSections($fieldsTypes, $tagName=false){
-	if(!($tag = $tagName)){
-		reset($fieldsTypes);
-		$tag = key($fieldsTypes);
-	}
-	foreach($fieldsTypes[$tag] as $field_type => $data){
+function setFieldSections($tag, $dataArray, $section=false){
+	foreach($dataArray as $field_type => $data){
 		$section_classes = (is_array($data)) ?
 			$data[0] : $data;
 		require TMPL_PARTIALS_PATH . 'sections.php';

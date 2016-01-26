@@ -1,6 +1,6 @@
 <?php
 $section_contents = setSectionContents($field_type, $tag, $data);
-if($tagName):?>
+if($section):?>
 <section class="<?php
 	echo $section_classes; ?>">
 	<?php echo $section_contents;?>
