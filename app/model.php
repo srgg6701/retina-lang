@@ -11,6 +11,33 @@ $sections = array( // get sections
 				// 3
 				'Image'=>array('image','image/compare','image/bulk'),
 			);
+// set data for the sections.php
+$fieldsTypes = array(
+		'input'=>array(
+			'start_index'=>array(
+				"pull-left",
+				array(
+					'id'=>"start-index",
+					'type'=>"text",
+					'value'=>"0"
+				)
+			),
+			'max_results'=>array(
+				"pull-left gap-left",
+				array(
+					'id'=>"max-results",
+					'type'=>"text",
+					'value'=>"10",
+					'minlength'=>"0"
+				)
+			)
+		),
+		'select'=>array(
+			// select_name => classes
+			'pos_type'=>'pull-left visibility none',
+			'get_fingerprint'=>'pull-left gap-left'
+		)
+	);
 // extract methods
 switch($option_post){
 	case "Retina":

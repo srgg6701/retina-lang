@@ -1,6 +1,6 @@
 <?php
 require_once 'config.php';
-require_once APP_PATH.'functions.php';
+require_once APP_PATH.'helper.php';
 require_once PHP_CLIENT_PATH.'ApiClient.php';
 require_once API_PATH.'api.php';
 require_once APP_PATH.'controller.php';

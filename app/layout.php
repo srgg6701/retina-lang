@@ -5,10 +5,10 @@ if ($option):?>
 		<?php echo $option;?>
 	</h2>
 	<?php
-	if ($section) require_once TMPL_PARTIALS_PATH.'select-subsections.php';
+	if ($section) require_once TMPL_PATH . 'selects' . DIRECTORY_SEPARATOR. 'subsections.php';
 	require_once TMPL_PARTIALS_PATH.'input-term.php';
 	//
-	require_once TMPL_PARTIALS_PATH.'selects-common.php';
+	require_once TMPL_PATH . 'selects' . DIRECTORY_SEPARATOR . 'common.php';
 	?>
 	<main>
 	<?php
