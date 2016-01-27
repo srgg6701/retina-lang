@@ -41,6 +41,30 @@ function setInputBlock($name='', $type='', $params='', $text='', $classes=false,
 	if($type):
 		?> type="<?php echo $type;?>"<?php
 	endif;?> class="form-control<?php
+
+	// set classes & params data
+	setInputTagContent($classes, $params);
+
+	if($value):?> value="<?php echo $value;?>"<?php endif;?>>
+<?php
+}
+
+/**
+ * @param string $name
+ * @param bool|false $params
+ * @param bool|false $classes
+ */
+function setTextArea($name='', $params=false, $classes=false){
+	?>
+	<textarea name="<?php echo $name;?>" class="body-textarea"<?php
+	setInputTagContent($classes, $params);?>></textarea>
+<?php
+}
+/**
+ * @param bool|false $classes
+ * @param bool|false $params
+ */
+function setInputTagContent($classes=false, $params=false){
 	if(is_array($classes)):
 		echo $classes;
 	endif;?>"<?php
@@ -49,8 +73,6 @@ function setInputBlock($name='', $type='', $params='', $text='', $classes=false,
 			echo ' ' . $param . '="' . $val . '"';
 		endforeach;
 	endif;
-	if($value):?> value="<?php echo $value;?>"<?php endif;?>>
-<?php
 }
 /**
  * @param $id
