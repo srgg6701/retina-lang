@@ -27,7 +27,7 @@ class ExpressionsApi
     public function resolveExpression($body, $retina_name, $sparsity = null)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/expressions";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";
@@ -76,7 +76,7 @@ class ExpressionsApi
     public function getContextsForExpression($body, $get_fingerprint = null, $retina_name, $start_index = null, $max_results = null, $sparsity = null)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/expressions/contexts";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";
@@ -136,7 +136,7 @@ class ExpressionsApi
     public function getSimilarTermsForExpressionContext($body, $context_id = null, $pos_type = null, $get_fingerprint = null, $retina_name, $start_index = null, $max_results = null, $sparsity = null)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/expressions/similar_terms";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";
@@ -197,7 +197,7 @@ class ExpressionsApi
     public function resolveBulkExpression($body, $retina_name, $sparsity = null)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/expressions/bulk";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";
@@ -246,7 +246,7 @@ class ExpressionsApi
     public function getContextsForBulkExpression($body, $get_fingerprint = null, $retina_name, $start_index = null, $max_results = null, $sparsity = null)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/expressions/contexts/bulk";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";
@@ -306,7 +306,7 @@ class ExpressionsApi
     public function getSimilarTermsForBulkExpressionContext($body, $context_id = null, $pos_type = null, $get_fingerprint = null, $retina_name, $start_index = null, $max_results = null, $sparsity = null)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/expressions/similar_terms/bulk";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";

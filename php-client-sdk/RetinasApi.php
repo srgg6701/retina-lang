@@ -25,7 +25,7 @@ class RetinasApi
     public function getRetinas($retina_name = null)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/retinas";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";

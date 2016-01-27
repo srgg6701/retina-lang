@@ -23,6 +23,35 @@ function setSelectBlock($header, $file_name, $data_ask_target){
 	</div>
 	<?php
 }
+
+/**
+ * @param string $name
+ * @param string $type
+ * @param string $params
+ * @param bool|false $classes
+ * @param bool|false $value
+ * @param string $text
+ */
+function setInputBlock($name='', $type='', $params='', $text='', $classes=false, $value=false){
+	echo $text . ': ';?>
+	<input<?php
+   	if($name):
+		?> name="<?php echo $name;?>"<?php
+	endif;
+	if($type):
+		?> type="<?php echo $type;?>"<?php
+	endif;?> class="form-control<?php
+	if(is_array($classes)):
+		echo $classes;
+	endif;?>"<?php
+	if(is_array($params)):
+		foreach($params as $param=>$val):
+			echo ' ' . $param . '="' . $val . '"';
+		endforeach;
+	endif;
+	if($value):?> value="<?php echo $value;?>"<?php endif;?>>
+<?php
+}
 /**
  * @param $id
  * @param $header_text
@@ -47,7 +76,7 @@ function setFieldSections($tag, $dataArray, $section=false){
 	foreach($dataArray as $field_type => $data){
 		$section_classes = (is_array($data)) ?
 			$data[0] : $data;
-		require TMPL_PARTIALS_PATH . 'sections.php';
+		require TMPL_PATH_PARTIALS . 'sections.php';
 		echo "\n";
 	}
 }

@@ -26,7 +26,7 @@ class TextApi
     public function getRepresentationForText($body, $retina_name)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/text";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";
@@ -68,7 +68,7 @@ class TextApi
     public function getKeywordsForText($body, $retina_name)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/text/keywords";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";
@@ -111,7 +111,7 @@ class TextApi
     public function getTokensForText($body, $POStags = null, $retina_name)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/text/tokenize";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";
@@ -159,7 +159,7 @@ class TextApi
     public function getSlicesForText($body, $get_fingerprint = null, $retina_name, $start_index = null, $max_results = null)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/text/slices";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";
@@ -211,7 +211,7 @@ class TextApi
     public function getRepresentationsForBulkText($body, $retina_name, $sparsity = null)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/text/bulk";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";
@@ -257,7 +257,7 @@ class TextApi
     public function getLanguage($body)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/text/detect_language";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";

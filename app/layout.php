@@ -5,13 +5,17 @@ if ($option):?>
 		<?php echo $option;?>
 	</h2>
 	<?php
-	if ($section) require_once TMPL_PATH . 'selects' . DIRECTORY_SEPARATOR. 'subsections.php';
-	require_once TMPL_PARTIALS_PATH.'input-term.php';
+	if ($section)
+		require_once TMPL_PATH . 'selects' . DIRECTORY_SEPARATOR. 'subsections.php';
+	if($option_get=='Term'):
+		require_once TMPL_PATH_INPUTS . 'term.php';
+	endif;
 	//
 	require_once TMPL_PATH . 'selects' . DIRECTORY_SEPARATOR . 'common.php';
 	?>
 	<main>
 	<?php
+	// if we get the service API answer
 	if($option_post):?>
 		<div id="data-answer">
 			<h4>Data</h4>
@@ -45,16 +49,16 @@ if ($option):?>
 			?>
 		</div>
 	<?php
-	else:
-		require_once TMPL_PARTIALS_PATH.'form.php';
+	else: // if we just load the section by clicking a link in menu
+		require_once TMPL_PATH_PARTIALS.'form.php';
 	endif;
 	//
-	require_once TMPL_PARTIALS_PATH.'help.php';
+	require_once TMPL_PATH_PARTIALS.'help.php';
 	?>
 	</main>
 	<?php
 	//
-	require_once TMPL_PARTIALS_PATH.'raw_answer.php';
+	require_once TMPL_PATH_PARTIALS.'raw_answer.php';
 	?>
 <input type="hidden" name="option" value="<?php echo $option;?>"/>
 <button type="submit" class="btn">Get data!</button>

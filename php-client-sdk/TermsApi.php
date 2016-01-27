@@ -29,7 +29,7 @@ class TermsApi
     public function getTerm($term = null, $get_fingerprint = null, $retina_name, $start_index = null, $max_results = null)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/terms";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
@@ -86,7 +86,7 @@ class TermsApi
     public function getContextsForTerm($term, $get_fingerprint = null, $retina_name, $start_index = null, $max_results = null)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/terms/contexts";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
@@ -145,7 +145,7 @@ class TermsApi
     public function getSimilarTerms($term, $context_id = null, $pos_type = null, $get_fingerprint = null, $retina_name, $start_index = null, $max_results = null)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/terms/similar_terms";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";

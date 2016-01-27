@@ -28,7 +28,7 @@ class CompareApi
     public function compare($body, $retina_name)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/compare";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";
@@ -68,7 +68,7 @@ class CompareApi
 
    public function compareBulk($body, $retina_name) {
 
-  		//parse inputs
+  		//parse text_fields
   		$resourcePath = "/compare/bulk";
   		$resourcePath = str_replace("{format}", "json", $resourcePath);
   		$method = "POST";

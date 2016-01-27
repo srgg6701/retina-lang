@@ -30,7 +30,7 @@ class ImageApi
     public function getImageForExpression($body, $retina_name, $image_scalar = null, $plot_shape = null, $image_encoding = null, $sparsity = null)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/image";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";
@@ -87,7 +87,7 @@ class ImageApi
     public function getOverlayImage($body, $retina_name, $plot_shape = null, $image_scalar = null, $image_encoding = null)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/image/compare";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";
@@ -142,7 +142,7 @@ class ImageApi
     public function getImageForBulkExpressions($body, $get_fingerprint = null, $retina_name, $image_scalar = null, $plot_shape = null, $sparsity = null)
     {
 
-        //parse inputs
+        //parse text_fields
         $resourcePath = "/image/bulk";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";

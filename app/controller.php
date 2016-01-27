@@ -1,12 +1,15 @@
 <?php
-$template = $option = $section = $methodDefaul = $filter_name = $body = $POStags = $term = $context_id = $pos_type = $get_fingerprint	 = $retina_name = $start_index = $max_results = $image_scalar = $plot_shape	 = $image_encoding = $sparsity = null;
+$template = $option = $section = $methodDefaul = $filter_name = $body = $POStags = $term = $context_id = $pos_type = $get_fingerprint	 = $retina_name = $start_index = $max_results = $image_scalar = $plot_shape	 = $image_encoding = $sparsity = $option_get = $option_post = null;
 if(isset($_REQUEST['option'])){
+
 	$option=$_REQUEST['option'];
+
 	$template = TMPL_PATH.$option.'.php';
-	$option_get = isset($_GET['option']) ?
-			$_GET['option'] : null;
-	$option_post = isset($_POST['option']) ?
-			$_POST['option'] : null;
+
+	if(isset($_GET['option']))
+		$option_get = $_GET['option'];
+	if(isset($_POST['option']))
+		$option_post = $_POST['option'];
 
 	if($option_post){
 		$retina_name = (isset($_POST['retina_name'])) ?

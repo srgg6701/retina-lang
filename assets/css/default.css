@@ -58,7 +58,8 @@ pre section.collapse > span:first-child{
 }
 
 select[name="select-subsection"],
-input[name="data_entry"]{
+input[name="data_entry"],
+.common-top{
     margin-top: 20px;
 }
 span.glyphicon.glyphicon-question-sign{
@@ -146,6 +147,10 @@ span.glyphicon.glyphicon-question-sign{
 #selects-common >div{
     float: left;
     margin-right: 20px;
+}
+.common-left{
+    float:left;
+    margin-left:20px;   
 }
 #visual-circuits{
     position: absolute;

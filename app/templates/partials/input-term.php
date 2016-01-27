@@ -1,1 +1,0 @@
-<input class="form-control wide gap-left" placeholder="input a term here" type="text" name="data_entry" />
