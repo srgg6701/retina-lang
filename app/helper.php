@@ -40,24 +40,29 @@ function setInputBlock($name='', $type='', $params='', $text='', $classes=false,
 	endif;
 	if($type):
 		?> type="<?php echo $type;?>"<?php
-	endif;?> class="form-control<?php
-
+	endif;?> class="<?php
+	echo FORM_CLASS;
 	// set classes & params data
 	setInputTagContent($classes, $params);
 
 	if($value):?> value="<?php echo $value;?>"<?php endif;?>>
 <?php
 }
-
 /**
  * @param string $name
  * @param bool|false $params
  * @param bool|false $classes
  */
-function setTextArea($name='', $params=false, $classes=false){
-	?>
-	<textarea name="<?php echo $name;?>" class="body-textarea"<?php
-	setInputTagContent($classes, $params);?>></textarea>
+function setTextArea($header='', $name='', $params=false, $classes=false){
+	if($header):?>
+	<div class="pull-left">
+		<?php echo $header; ?>:&nbsp;
+	</div>
+<?php
+	endif;?>
+	<textarea name="<?php echo $name;?>" class="<?php
+	echo FORM_CLASS;
+	setInputTagContent($classes, $params);?>"></textarea>
 <?php
 }
 /**
@@ -66,7 +71,7 @@ function setTextArea($name='', $params=false, $classes=false){
  */
 function setInputTagContent($classes=false, $params=false){
 	if(is_array($classes)):
-		echo $classes;
+		echo ' ' . $classes;
 	endif;?>"<?php
 	if(is_array($params)):
 		foreach($params as $param=>$val):
@@ -102,7 +107,6 @@ function setFieldSections($tag, $dataArray, $section=false){
 		echo "\n";
 	}
 }
-
 /**
  * @param $field_type
  * @param $tag
@@ -117,7 +121,8 @@ function setSectionContents($field_type, $tag, $data){
 			includeSelect($field_type);
 		elseif ($tag == 'input') {
 			?>
-			<input class="form-control"<?php
+			<input class="<?php
+			echo FORM_CLASS;
 			foreach ($data[1] as $param => $value):
 				echo ' ' . $param . '="' . $value . '"';
 			endforeach; ?>>

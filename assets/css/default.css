@@ -19,6 +19,9 @@ pre > h4:first-child{
     cursor: pointer;
     margin-top: 0;
 }
+main{
+    clear: both;
+}
 nav .glyphicon-eye-close{
     font-size:0.9em;
     margin-right: 4px;
@@ -77,6 +80,12 @@ span.glyphicon.glyphicon-question-sign{
 }
 .gap-left{
     margin-left:20px;
+}
+.pull-left textarea{
+    height: 109px;
+    margin: 0px;
+    max-width: 100%;
+    width: 600px !important;
 }
 /* -------------------- */
 #data-answer{
@@ -142,11 +151,12 @@ span.glyphicon.glyphicon-question-sign{
     position: absolute;
     white-space: nowrap;
 }
-#selects-common{
-}
 #selects-common >div{
     float: left;
     margin-right: 20px;
+}
+.clear-both{
+    clear:both;
 }
 .common-left{
     float:left;

@@ -9,4 +9,9 @@
 	endif;
 ?>
 	</div>
+<?php
+if($option_get!='Retina'&&$option_get!='Term'):
+	require_once TMPL_PATH_INPUTS . 'body.php';
+endif;
+?>
 </div>

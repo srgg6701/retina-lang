@@ -7,3 +7,5 @@ define('TMPL_PATH',APP_PATH.'templates'.DIRECTORY_SEPARATOR);
 define('TMPL_PATH_PARTIALS',TMPL_PATH.'partials'.DIRECTORY_SEPARATOR);
 define('TMPL_PATH_INPUTS',TMPL_PATH.'text_fields'.DIRECTORY_SEPARATOR);
 define('TMPL_PATH_SELECTS',TMPL_PATH.'selects'.DIRECTORY_SEPARATOR);
+//-----------------
+define('FORM_CLASS', 'form-control');
