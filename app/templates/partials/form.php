@@ -1,7 +1,8 @@
 <section id="section-api_params" class="padding10 clearfix">
 	<div class="visibility none">
 <?php
-	if($option_get!='Retina'):?>
+	if($option_get=='Term'||$option_get=='Expression'):
+		?>
 		<br/>
 <?php	// context_id
 		setFieldSections(
@@ -17,6 +18,9 @@
 			)
 		);?>
 	</div>
+<?php
+	endif;
+	if($option_get=='Term'||$option_get=='Text'||$option_get=='Expression'):?>
 	<br/>
 	<div id="results-length" class="clearfix">
 <?php	// start_index
@@ -48,15 +52,21 @@
 			), true);
 		?>
 	</div>
+<?php
+	endif;
+	if($option_get=='Term'||$option_get=='Text'||$option_get=='Expression'||$option_get=='Image'):?>
 	<br/>
 	<div class="clearfix">
-<?php	// pos_type
-		setFieldSections(
-			'select',
-			array(
-				'pos_type'=>'pull-left visibility none'
-			), true
-		);
+<?php
+		if ($option_get!='Text'&&$option_get!='Image'):
+			// pos_type
+			setFieldSections(
+				'select',
+				array(
+					'pos_type'=>'pull-left visibility none'
+				), true
+			);
+		endif;
 		// get_fingerprint
 		setFieldSections(
 			'select',

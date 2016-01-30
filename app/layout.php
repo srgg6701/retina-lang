@@ -72,5 +72,4 @@ else:
 	if ($template) require_once $template;?>
 </main>
 <?php
-
 endif;
