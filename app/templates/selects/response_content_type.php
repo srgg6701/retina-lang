@@ -1,3 +1,3 @@
-<select name="responseContentType" class="<?php echo FORM_CLASS;?>">
+<select class="<?php echo FORM_CLASS;?>" name="responseContentType">
 	<option value="application/json">application/json</option>
 </select>

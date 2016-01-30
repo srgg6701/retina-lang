@@ -5,6 +5,9 @@ function outputContentData($dataContent){
 	<?php
 	endforeach;
 }
+/**
+ * @param $file_name
+ */
 function includeSelect($file_name){
 	require_once TMPL_PATH_SELECTS . $file_name . '.php';
 }
@@ -13,17 +16,22 @@ function includeSelect($file_name){
  * @param $file_name
  * @param $data_ask_target
  */
-function setSelectBlock($header, $file_name, $data_ask_target){
+function setSelectBlock($header, $file_name=false, $data_ask_target=false){
 	?>
 	<div>
 		<?php echo $header;?>:
-		<?php includeSelect($file_name)
-		?><span data-ask-target="<?php echo $data_ask_target;?>"
-				class="glyphicon glyphicon-question-sign"></span>
+		<?php
+	if(!$file_name) $file_name = $header;
+	includeSelect($file_name);
+	if($data_ask_target):?>
+		<span data-ask-target="<?php
+		echo $data_ask_target;
+		?>" class="glyphicon glyphicon-question-sign"></span>
+	<?php
+	endif;?>
 	</div>
 	<?php
 }
-
 /**
  * @param string $name
  * @param string $type
@@ -32,7 +40,9 @@ function setSelectBlock($header, $file_name, $data_ask_target){
  * @param bool|false $value
  * @param string $text
  */
-function setInputBlock($name='', $type='', $params='', $text='', $classes=false, $value=false){
+function setInputBlock($name='', $type='', $params='', $text='', $classes=false, $value=false){?>
+<div>
+	<?php
 	echo $text . ': ';?>
 	<input<?php
    	if($name):
@@ -43,9 +53,9 @@ function setInputBlock($name='', $type='', $params='', $text='', $classes=false,
 	endif;?> class="<?php
 	echo FORM_CLASS;
 	// set classes & params data
-	setInputTagContent($classes, $params);
-
+	setTagParams($classes, $params);
 	if($value):?> value="<?php echo $value;?>"<?php endif;?>>
+</div>
 <?php
 }
 /**
@@ -55,21 +65,22 @@ function setInputBlock($name='', $type='', $params='', $text='', $classes=false,
  */
 function setTextArea($header='', $name='', $params=false, $classes=false){
 	if($header):?>
-	<div class="pull-left">
+	<div>
 		<?php echo $header; ?>:&nbsp;
-	</div>
 <?php
 	endif;?>
-	<textarea name="<?php echo $name;?>" class="<?php
+		<textarea name="<?php echo $name;?>" class="<?php
 	echo FORM_CLASS;
-	setInputTagContent($classes, $params);?>"></textarea>
+	setTagParams($classes, $params);?>">
+		</textarea>
+	</div>
 <?php
 }
 /**
  * @param bool|false $classes
  * @param bool|false $params
  */
-function setInputTagContent($classes=false, $params=false){
+function setTagParams($classes=false, $params=false){
 	if(is_array($classes)):
 		echo ' ' . $classes;
 	endif;?>"<?php
@@ -92,43 +103,4 @@ function setHelpSections($id, $header_text, $section_content="...coming soon..."
 		<?php echo $section_content;?>
 	</section>
 	<?php
-}
-
-/**
- * @param $tag string is used in the template
- * @param $dataArray
- * @param bool|false $section
- */
-function setFieldSections($tag, $dataArray, $section=false){
-	foreach($dataArray as $field_type => $data){
-		$section_classes = (is_array($data)) ?
-			$data[0] : $data;
-		require TMPL_PATH_PARTIALS . 'sections.php';
-		echo "\n";
-	}
-}
-/**
- * @param $field_type
- * @param $tag
- * @param $data
- */
-function setSectionContents($field_type, $tag, $data){
-	ob_start();?>
-	<div><?php echo $field_type; ?></div>
-	<div>
-		<?php
-		if ($tag == 'select')
-			includeSelect($field_type);
-		elseif ($tag == 'input') {
-			?>
-			<input class="<?php
-			echo FORM_CLASS;
-			foreach ($data[1] as $param => $value):
-				echo ' ' . $param . '="' . $value . '"';
-			endforeach; ?>>
-			<?php
-		} ?>
-	</div>
-	<?php
-	return ob_get_clean();
 }

@@ -1,95 +1,81 @@
-<?php
-require_once 'config.php';
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Home</title>
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css"/>
-  <link rel="stylesheet" type="text/css" href="assets/css/default.css">
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/default.js"></script>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/default.css">
+    <script src="assets/js/libs/jquery.min.js"></script>
+    <script src="assets/js/libs/bootstrap.min.js"></script>
+    <script src="assets/js/default.js"></script>
 </head>
 <body>
 <div class="container">
-  <h1 class="row">Hello, hunter sense!</h1>
+    <nav class="row navbar">    <ul class="nav navbar-nav pull-right">
+            <li><a href="/?option=Retina">Retina</a></li>
+            <li><a href="/?option=Term">Term</a></li>
+            <li><a href="/?option=Text">Text</a></li>
+            <li><a href="/?option=Expression">Expression</a></li>
+            <li><a href="/?option=Compare">Compare</a></li>
+            <li><a href="/?option=Image">Image</a></li>
+            <li><a href="/?option=Classify">Classify</a></li>
+        </ul>
+        <h1 class="pull-left">
+            <a href="/"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span><b>Retina</b>.client</a>
+            <div id="powered">Powered by <a href="http://cortical.io">cortical.io</a></div>
+        </h1>
+        <div id="visual-circuits"></div>
+    </nav>
 </div>
-<hr/>
-<div class="container">
-  <form id="form-data" class="form-inline row auto table">
-    <input class="form-control wide" placeholder="input a term here" type="text" name="data_entry" />
-    <section id="section-methods" class="padding10">
-    	<label>
-      		<input type="radio" name="api-method" id="getTerm" required="required">Terms
-        </label>
-    	<label>
-        	<input type="radio" name="api-method" id="getContextsForTerm" required="required">Contexts
-        </label>
-    	<label>
-        	<input type="radio" name="api-method" id="getSimilarTerms" required="required">Similar terms
-        </label>
-    </section>
-    <section id="section-api_params" class="padding10 clearfix">
-      	 <div>retina_name</div>
-      	 <div>
-      		<select class="form-control" name="retina_name">
-          		<option value="en_associative">en_associative</option>
-		        <option value="en_synonymous">en_synonymous</option>
-        	</select>
-		</div>
-        <div class="visibility none">
-        	<br/>
-            <div>context_id</div>
-            <div><input class="form-control" type="text" id="context-id"></div>
-        </div>
-      <br/>
-      	<div id="results-length" class="clearfix">
-        	<section class="pull-left">
-                <div>start_index</div>
-                <div><input class="form-control" id="start-index" type="text" value="0"></div>
-    		</section>
-			<section class="pull-left">            
-                <div>max_results</div>
-                <div><input class="form-control" minlength="0" id="max-results" type="text" value="10"></div>
-            </section>
-        </div>
-      <br/>
-        <div class="clearfix">
-          <section class="pull-left visibility none">
-            <div>pos_type</div>
-            <div>
-                <select class="form-control" name="pos_type">
-                    <option selected="" value=""></option>
-                    <option value="NOUN">NOUN</option>
-                    <option value="ADJECTIVE">ADJECTIVE</option>
-                    <option value="VERB">VERB</option>
-                </select>
+<div class="container" id="content">
+    <div class="row">
+        <form class="form-inline" name="form-api-data" method="post">
+            <div class="clearfix">
+                <h2 class="pull-left gap-right">
+                    Retina		</h2>
             </div>
-          </section>
-          <section class="pull-left">
-            <div>get_fingerprint</div>
-            <div>
-                <select class="form-control" name="get_fingerprint">
-                  <option selected="selected" value="true">true</option>
-                  <option value="false">false (default)</option>
-                </select>
+            <div class="clearfix">
+                <div>
+                    Response Content Type:
+                    <select class="form-control" name="responseContentType">
+                        <option value="application/json">application/json</option>
+                    </select>		<span data-ask-target="description-responseContentType" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+                <div>
+                    Retina name:
+                    <select class="form-control" name="retina_name">
+                        <option selected="selected" value="">-choose-</option>
+                        <option value="en_associative">en_associative</option>
+                        <option value="en_synonymous">en_synonymous</option>
+                    </select>		<span data-ask-target="description-retina_name" class="glyphicon glyphicon-question-sign"></span>
+                </div>
             </div>
-          </section>
-        </div>
-    </section>
-    <button class="btn table btn-primary" id="btn-get-data" type="submit">Get data</button>
-  </form>
-  <div class="row">
-    <hr/>
-    <h4 id="h4-results" class="clearfix">
-        <span class="pull-left">Results:</span>
-        <img class="pull-left" src="assets/images/ajax-loader_orig.gif" width="32" height="32"><button id="results-clear" class="invisible pull-right btn">clear</button></h4>
-    <div id="content" class="padding10 auto table"></div>
-  </div>
+            <main>
+                <section id="section-api_params">
+    </div>
+    </section><div id="help-contents">
+        <section id="description-responseContentType" class="collapse">
+            <span>+</span>
+            <h4>Response Content Type</h4>
+            <p>Defines what type of data will come from the server. Currently it is only JSON.</p>	</section>
+        <section id="description-retina_name" class="collapse">
+            <span>+</span>
+            <h4>Retina Name</h4>
+            <p>Retina used for word space models. It allows to compute distances between terms, which can be used to determine the degree of similarity between terms.</p>
+            <p>There are two types of retina:</p>
+            <ol>
+                <li>en_synonymous</li>
+                <p>An english language retina focusing on synonymous similarity.</p>
+                <li>en_associative</li>
+                <p>An english language retina balancing synonymous and associative similarity.</p>
+            </ol>	</section>
+    </div>	</main>
+    <input type="hidden" name="option" value="Retina"/>
+    <button type="submit" class="btn">Get data!</button>
+    </form>
 </div>
-<div id="bg-visual"></div>
+</div>
 </body>
 </html>

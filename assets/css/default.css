@@ -1,35 +1,54 @@
-body>.container:first-child{
+body
+    >.container:first-child{
     border-bottom: solid 3px rgba(51, 122, 183, 0.65);
     margin-bottom: 20px;
 }
-body>.container:first-child nav{
+body
+    >.container:first-child
+        nav{
     margin-bottom: 10px;
 }
-body>.container:first-child nav h1{
+body
+    >.container:first-child
+        nav
+            h1{
     position:relative;
     margin-top: 16px;
 }
-nav ul.nav li a{
+nav
+    ul.nav
+        li
+            a{
     display: table-cell;
     height: 70px;
     vertical-align: middle;
 }
-pre > h4:first-child{
+main{
+    clear: both;
+}
+nav
+    .glyphicon-eye-close{
+    font-size:0.9em;
+    margin-right: 4px;
+}
+pre
+    section.collapse
+        > span:first-child{
+    font-size: 1.5em;
+    right: -3px;
+    top: -32px;
+}
+pre
+    > h4:first-child{
     color: brown;
     cursor: pointer;
     margin-top: 0;
 }
-main{
-    clear: both;
-}
-nav .glyphicon-eye-close{
-    font-size:0.9em;
-    margin-right: 4px;
-}
 section.collapse{
     position: relative;    
 }
-section.collapse > span:first-child{
+section.collapse
+    > span:first-child{
     background-color: black;
     border-radius: 50%;
     color:white;
@@ -51,19 +70,9 @@ section.collapse > span:first-child{
     vertical-align: middle;
     width: 21px;
 }
-section.collapse > span:first-child:hover{
+section.collapse
+    > span:first-child:hover{
     opacity:1;
-}
-pre section.collapse > span:first-child{
-    font-size: 1.5em;
-    right: -3px;
-    top: -32px;
-}
-
-select[name="select-subsection"],
-input[name="data_entry"],
-.common-top{
-    margin-top: 20px;
 }
 span.glyphicon.glyphicon-question-sign{
     color: #7AA8D0;
@@ -74,34 +83,68 @@ span.glyphicon.glyphicon-question-sign{
     -o-transform: translateY(4px);
     margin-left: 6px;
 }
+[name="form-api-data"]{
+    padding-top: 20px;
+}
+[name="form-api-data"] >.clearfix:first-child{
+    min-height:54px;
+}
+
 /* -------------------- */
-.btn{
-    margin-top:15px;
+.block{
+    display: block;
+    float: none;
+}
+.clearfix{
+    clear:both;
+}
+.clearfix
+    >div:not(.block){
+    float: left;
+    margin-bottom:20px;
+    margin-right: 20px;
+}
+.clear-both{
+    clear:both;
 }
 .gap-left{
     margin-left:20px;
 }
-.pull-left textarea{
+.gap-right{
+    margin-right:20px;
+}
+.pull-left
+    textarea{
     height: 109px;
     margin: 0px;
     max-width: 100%;
     width: 600px !important;
 }
 /* -------------------- */
+#content-box{
+    clear:both;
+}
+#content
+    h2{
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+}
 #data-answer{
     background-color: aliceblue;
     border-radius: 4px;
     padding:15px;
 }
-#data-answer h4{
+#data-answer
+    h4{
     font-weight:bold;
 }
-#data-answer > h4:first-child{
+#data-answer
+    > h4:first-child{
     color: #337AB7;
     margin-top:0;
 }
 #help-contents{
-    /* background-color: aliceblue; */
     position:absolute;
     bottom:0;
     overflow-y: auto;
@@ -111,7 +154,8 @@ span.glyphicon.glyphicon-question-sign{
     max-width:600px;
     width:100%;
 }
-#help-contents section.collapse{
+#help-contents
+    section.collapse{
     background-color: #7AA8D0;
     border-radius: 4px;
     color: white;
@@ -120,28 +164,15 @@ span.glyphicon.glyphicon-question-sign{
     padding: 15px;
     transition:opacity 0.3s ease;
 }
-#help-contents section.collapse:hover{
+#help-contents
+    section.collapse:hover{
     opacity:1;
 }
-#help-contents section.collapse h4{
+#help-contents
+    section.collapse
+        h4{
     font-weight:900;
     margin-top:0;
-}
-#pre-raw-data{
-    margin-top:15px;
-}
-#content-box{
-    clear:both;
-    margin-bottom: 15px;
-}
-#content h2{
-    /* margin-top:0; */
-    margin-bottom:20px;
-}
-#form-query-params{
-    clear: both;
-    margin-bottom:20px;
-    /* position: absolute; */
 }
 #powered{
     bottom: -18px;
@@ -151,20 +182,20 @@ span.glyphicon.glyphicon-question-sign{
     position: absolute;
     white-space: nowrap;
 }
-#selects-common >div{
-    float: left;
-    margin-right: 20px;
+#pre-raw-data{
+    margin-top:15px;
 }
-.clear-both{
-    clear:both;
+#textarea-container{
+    max-width: 100%;
+    width: 600px;
 }
-.common-left{
-    float:left;
-    margin-left:20px;   
+#textarea-container textarea{
+    margin-right: -108px;
+    max-width: 100%;
+    width: 600px;
 }
 #visual-circuits{
     position: absolute;
-    /* background: url(../images/circuits.jpg) no-repeat; */
     background-size: cover;
     top: 0;
     left: 0;

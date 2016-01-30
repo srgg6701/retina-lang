@@ -36,10 +36,7 @@ require_once APP_PATH.'controller.php';
 </div>
 <div class="container" id="content">
   <div class="row">
-    <form class="form-inline clearfix" id="form-query-params" method="post">
-    <?php
-    echo $content;?>
-    </form>
+    <?php echo $content;?>
   </div>
 </div>
 </body>
