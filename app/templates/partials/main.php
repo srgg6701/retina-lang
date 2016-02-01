@@ -3,14 +3,14 @@
 	if($option_get=='Term'||$option_get=='Expression'):
 		?>
 	<div class="clearfix">
-<?php 	setInputBlock('context_id', 'text', array('name'=>'start-index'), 'context_id');?>
+<?php 	setInputBlock('context_id', 'text', array('name'=>'start-index'));?>
 	</div>
 <?php
 	endif;
 	if($option_get=='Term'||$option_get=='Text'||$option_get=='Expression'):?>
 	<div class="clearfix">
-<?php	setInputBlock('start_index', 'text', array('name'=>'start-index'), 'start_index', false, '0');
-		setInputBlock('max_results', 'text', array('name'=>'max_results'), 'max_results', false, '10');?>
+<?php	setInputBlock('start_index', 'text', array('name'=>'start-index'), '0');
+		setInputBlock('max_results', 'text', array('name'=>'max_results'), '10');?>
 	</div>
 <?php
 	endif;

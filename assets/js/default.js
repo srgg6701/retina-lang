@@ -3,7 +3,8 @@ $(function(){
 		duration=300;
 	// manage *help* sections
 	$('['+dataAsc+']').on('click', function(){
-		$('#'+$(this).attr(dataAsc)).toggle(duration); //console.log('data-ask-target',{this:this, section:$('#'+$(this).attr(dataAsc))});
+		$('#description-'+$(this).attr(dataAsc)).toggle(duration);
+		console.log('data-ask-target',{this:this, section:$('#description-'+$(this).attr(dataAsc))});
 	});
 	// hide *help* sections
 	$('section.collapse>span:first-child').on('click', function(){

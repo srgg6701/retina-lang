@@ -11,39 +11,50 @@ function outputContentData($dataContent){
 function includeSelect($file_name){
 	require_once TMPL_PATH_SELECTS . $file_name . '.php';
 }
+
+/**
+ * @param $name
+ */
+function setDataAskHint($name){
+	?><span data-ask-target="<?php
+	echo $name;
+	?>" class="glyphicon glyphicon-question-sign"></span><?php
+}
 /**
  * @param $header
- * @param $file_name
+ * @param $nameFile
  * @param $data_ask_target
  */
-function setSelectBlock($header, $file_name=false, $data_ask_target=false){
+function setSelectBlock($header, $nameFile=false, $nameField=false){
 	?>
 	<div>
 		<?php echo $header;?>:
 		<?php
-	if(!$file_name) $file_name = $header;
-	includeSelect($file_name);
-	if($data_ask_target):?>
-		<span data-ask-target="<?php
-		echo $data_ask_target;
-		?>" class="glyphicon glyphicon-question-sign"></span>
-	<?php
+	if(!$nameFile) $nameFile = $header;
+	includeSelect($nameFile);
+	if($nameFile!==false):
+		$name=($nameField)? $nameField:$nameFile;
+		setDataAskHint($name);
 	endif;?>
 	</div>
 	<?php
 }
+
 /**
  * @param string $name
  * @param string $type
  * @param string $params
+ * @param bool|false $data_ask
+ * @param bool|false $text
  * @param bool|false $classes
  * @param bool|false $value
- * @param string $text
  */
-function setInputBlock($name='', $type='', $params='', $text='', $classes=false, $value=false){?>
+function setInputBlock($name='', $type='', $params='', $value=false, $data_ask=false, $classes=false){?>
 <div>
 	<?php
-	echo $text . ': ';?>
+	if($name):
+		echo $name . ': ';
+	endif;?>
 	<input<?php
    	if($name):
 		?> name="<?php echo $name;?>"<?php
@@ -54,7 +65,11 @@ function setInputBlock($name='', $type='', $params='', $text='', $classes=false,
 	echo FORM_CLASS;
 	// set classes & params data
 	setTagParams($classes, $params);
-	if($value):?> value="<?php echo $value;?>"<?php endif;?>>
+	if($value):?> value="<?php echo $value;?>"<?php endif;?>><?php
+	if($data_ask!=='') {
+		$arg = ($data_ask)? $data_ask:$name;
+		setDataAskHint($arg);
+	}?>
 </div>
 <?php
 }
@@ -97,7 +112,7 @@ function setTagParams($classes=false, $params=false){
  */
 function setHelpSections($id, $header_text, $section_content="...coming soon..."){
 	?>
-	<section id="<?php echo $id;?>" class="collapse">
+	<section id="description-<?php echo $id;?>" class="collapse">
 		<span>+</span>
 		<h4><?php echo $header_text;?></h4>
 		<?php echo $section_content;?>
