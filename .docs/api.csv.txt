@@ -1,0 +1,31 @@
+Option/Alias	Method	filter_name	body	POStags	term	context_id	pos_type	get_fingerprint	retina_name	start_index	max_results	image_scalar	plot_shape	image_encoding	sparsity
+
+▼ RETINA	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*
+retinas	getRetinas	- -	-	-	-	-	-	-	▒	-	-	-	-	-	-
+▼ TERM	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*
+terms	getTerm	-	-	-	■	-	-	▒	▒	▒	▒	-	-	-	-
+terms/contexts	getContextsForTerm	-	-	-	■	-	-	▒	▒	▒	▒	-	-	-	-
+terms/similar_terms	getSimilarTerms	-	-	-	■	▒	■	▒	▒	▒	▒	-	-	-	-
+▼ TEXT	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*
+text	getRepresentationForText	-	■	-	-	-	-	-	■	-	-	-	-	-	-
+text/keywords	getKeywordsForText	-	■	-	-	-	-	-	■	-	-	-	-	-	-
+text/tokenize	getTokensForText	-	■	▒	-	-	-	-	■	-	-	-	-	-	-
+text/slices	getSlicesForText	-	■	-	-	-	-	▒	■	▒	▒	-	-	-	-
+text/bulk	getRepresentationsForBulkText	-	■	-	-	-	-	-	■	-	-	-	-	-	▒
+text/detect_language	getLanguage	-	■	-	-	-	-	-		-	-	-	-	-	-
+▼ EXPRESSION	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*
+expressions	resolveExpression	-	■	-	-	-	-	-	■	-	-	-	-	-	▒
+expressions/contexts	getContextsForExpression	-	■	-	-	-	-	▒	■	▒	▒	-	-	-	▒
+expressions/similar_terms	getSimilarTermsForExpression	-	■	-	-	▒	■	▒	■	▒	▒	-	-	-	▒
+expressions/bulk	resolveBulkExpression	-	■	-	-	-	-	-	■	-	-	-	-	-	▒
+expressions/contexts/bulk	getContextsForBulkExpression	-	■	-	-	-	-	▒	■	▒	▒	-	-	-	▒
+expressions/similar_terms/bulk	getSimilarTermsForBulkExpres	-	■	-	-	▒	■	▒	■	▒	▒	-	-	-	▒
+▼ COMPARE	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*
+compare	compare	-	■	-	-	-	-	-	■	-	-	-	-	-	-
+expressions/bulk	compareBulk	-	■	-	-	-	-	-	■	-	-	-	-	-	-
+▼ IMAGE	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*
+image	getImageForExpression	-	■	-	-	-	-	-	■	-	-	▒3	▒2	▒4	▒
+image/compare	getOverlayImage	-	■	-	-	-	-	-	■	-	-	▒3	▒2	▒4	-
+image/bulk	getImageForBulkExpressions	-	■	-	-	-	-	▒	■	-	-	▒3	▒2	-	▒
+▼ CLASSIFY	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*
+classify/create_category_filter	createCategoryFilter	■	■	-	-	-	-	-	■	-	-	-	-	-	-
