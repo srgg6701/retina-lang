@@ -14,5 +14,6 @@
 	setHelpSections("start_index", "Start index", "<p>The start-index for pagination</p>");
 	setHelpSections("max_results", "Max results", "<p>Max results per page</p>");
 	setHelpSections("pos_type", "Pos type", "<p>Part of speech</p>");
+	setHelpSections("get_fingerprint", "Get fingerprint", "<p>Configure if the fingerprint should be returned as part of the results</p>");
 	?>
 </div>
