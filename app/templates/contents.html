@@ -1,2 +1,619 @@
-<h3>Contents here!</h3>
 <h4>section: {{section}}</h4>
+<form class="form-inline" name="form-api-data" method="post">
+    <div class="clearfix"><!--header-->
+        <h2 class="pull-left gap-right">
+            <!-- style="background-color: transparent;"-->
+            <!--Retina, Term, Text, Expression, Compare, Image, Classify-->
+            {{header}}
+        </h2>
+        {   term, text, expression, compare, image:
+        <div>
+            <select class="form-control" name="select-subsection">
+                <option selected="selected">-choose-</option>
+            {   term:
+                <option value="terms">terms</option>
+                <option value="terms/contexts">terms/contexts</option>
+                <option value="terms/similar_terms">terms/similar_terms</option>
+            }
+            {   text:
+                <option value="text">text</option>
+                <option value="text/keywords">text/keywords</option>
+                <option value="text/tokenize">text/tokenize</option>
+                <option value="text/slices">text/slices</option>
+                <option value="text/bulk">text/bulk</option>
+                <option value="text/detect_language">text/detect_language</option>
+            }
+            {   expression:
+                <option value="expressions">expressions</option>
+                <option value="expressions/contexts">expressions/contexts</option>
+                <option value="expressions/similar_terms">expressions/similar_terms</option>
+                <option value="expressions/bulk">expressions/bulk</option>
+                <option value="expressions/contexts/bulk">expressions/contexts/bulk</option>
+                <option value="expressions/similar_terms/bulk">expressions/similar_terms/bulk</option>
+            }
+            {   compare:
+                <option value="compare">compare</option>
+                <option value="compare/bulk">compare/bulk</option>
+            }
+            {   image:
+                <option value="image">image</option>
+                <option value="image/compare">image/compare</option>
+                <option value="image/bulk">image/bulk</option>
+            }
+            </select>
+        </div>
+        <div>
+            <div>term:
+                <input name="term" type="text" class="form-control" placeholder="input a term here">
+                <span data-ask-target="term" class="glyphicon glyphicon-question-sign"></span>
+            </div>
+        </div>
+        }
+    </div>
+    <div class="clearfix">
+        <div>Response Content Type:
+            <select class="form-control" name="responseContentType">
+                <option value="application/json">application/json</option>
+            </select>
+            <span data-ask-target="responseContentType" class="glyphicon glyphicon-question-sign"></span>
+        </div>
+        <div>Retina name:
+            <select class="form-control" name="retina_name">
+                <option selected="selected" value="">-choose-</option>
+                <option value="en_associative">en_associative</option>
+                <option value="en_synonymous">en_synonymous</option>
+            </select>
+            <span data-ask-target="retina_name" class="glyphicon glyphicon-question-sign"></span>
+        </div>
+        {   classify:
+        <div>
+            <div>filter_name:
+                <input name="filter_name" type="text" class="form-control" minlength="1" placeholder="(required)" value="Filter name">
+            </div>
+        </div>
+        }
+    </div>
+    {   text, expression, compare, image:
+    <div class="clearfix" id="textarea-container">
+        <div>
+            Body:&nbsp;
+            <textarea name="body" class="form-control" placeholder="(required)"></textarea>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div>POStags:
+            <input name="POStags" type="text" class="form-control" placeholder="Specify desired POS types" value="POStags">
+            <span data-ask-target="wide gap-right" class="glyphicon glyphicon-question-sign"></span>
+        </div>
+    </div>
+    }
+    <main>
+        <section id="section-api_params">
+            {   term, expression:
+            <div class="clearfix">
+                <div>context_id:
+                    <input name="context_id" type="text" class="form-control">
+                    <span data-ask-target="context_id" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div>start_index:
+                    <input name="start_index" type="text" class="form-control">
+                    <span data-ask-target="start_index" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+                <div>max_results:
+                    <input name="max_results" type="text" class="form-control" value="10">
+                    <span data-ask-target="max_results" class="glyphicon glyphicon-question-sign"></span></div>
+            </div>
+            }
+            {   term, expression, image:
+            <div class="clearfix">
+                {   !image:
+                <div>pos_type:
+                    <select class="form-control" name="pos_type">
+                        <option selected="" value=""></option>
+                        <option value="NOUN">NOUN</option>
+                        <option value="ADJECTIVE">ADJECTIVE</option>
+                        <option value="VERB">VERB</option>
+                    </select>
+                    <span data-ask-target="pos_type" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+                }
+                <div>get_fingerprint:
+                    <select class="form-control" name="get_fingerprint">
+                        <option selected="selected" value="true">true</option>
+                        <option value="false">false (default)</option>
+                    </select>
+                    <span data-ask-target="get_fingerprint" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+            </div>
+            }
+            {   text:
+            <div class="clearfix">
+                <div>start_index: <input name="start_index" type="text" class="form-control">
+                    <span data-ask-target="start_index" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+                <div>max_results:
+                    <input name="max_results" type="text" class="form-control" value="10">
+                    <span data-ask-target="max_results" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div>get_fingerprint:
+                    <select class="form-control" name="get_fingerprint">
+                        <option selected="selected" value="true">true</option>
+                        <option value="false">false (default)</option>
+                    </select>
+                    <span data-ask-target="get_fingerprint" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+            </div>
+            }
+            {   image:
+            <div class="clearfix">
+                <div>image_scalar:
+                    <select class="form-control" name="image_scalar">
+                        <option selected="" value="2">2 (default)</option>
+                        <option value="5">5</option>
+                    </select>
+                    <span data-ask-target="image_scalar" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+                <div>plot_shape:
+                    <select class="form-control" name="plot_shape">
+                        <option selected="" value="circle">circle (default)</option>
+                        <option value="square">square</option>
+                    </select>
+                    <span data-ask-target="plot_shape" class="glyphicon glyphicon-question-sign"></span></div>
+                <div>image_encoding:
+                    <select class="form-control" name="image_encoding">
+                        <option selected="" value="base64/png">base64/png (default)</option>
+                        <option value=" binary/png"> binary/png</option>
+                    </select>
+                    <span data-ask-target="image_encoding" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+            </div>
+            }
+        </section>
+        <!--help contents-->
+        <div id="help-contents">
+            <section id="description-term" class="collapse">
+                <span>+</span>
+                <h4>Term</h4>
+                <p>A term in the retina</p></section>
+            <section id="description-responseContentType" class="collapse">
+                <span>+</span>
+                <h4>Response Content Type</h4>
+                <p>Defines what type of data will come from the server. Currently it is only JSON.</p></section>
+            <section id="description-retina_name" class="collapse">
+                <span>+</span>
+                <h4>Retina Name</h4>
+                <p>Retina used for word space models. It allows to compute distances between terms, which can be used to
+                    determine the degree of similarity between terms.</p>
+                <p>There are two types of retina:</p>
+                <ol>
+                    <li>en_synonymous</li>
+                    <p>An english language retina focusing on synonymous similarity.</p>
+                    <li>en_associative</li>
+                    <p>An english language retina balancing synonymous and associative similarity.</p>
+                </ol>
+            </section>
+            <section id="description-context_id" class="collapse">
+                <span>+</span>
+                <h4>Context id</h4>
+                <p>The identifier of a context</p></section>
+            <section id="description-start_index" class="collapse">
+                <span>+</span>
+                <h4>Start index</h4>
+                <p>The start-index for pagination</p></section>
+            <section id="description-max_results" class="collapse">
+                <span>+</span>
+                <h4>Max results</h4>
+                <p>Max results per page</p></section>
+            <section id="description-pos_type" class="collapse">
+                <span>+</span>
+                <h4>Pos type</h4>
+                <p>Part of speech</p></section>
+            <section id="description-get_fingerprint" class="collapse">
+                <span>+</span>
+                <h4>Get fingerprint</h4>
+                <p>Configure if the fingerprint should be returned as part of the results</p></section>
+        </div>
+    </main>
+
+    <!--<div class="clearfix">
+        <h2 class="pull-left gap-right">Term </h2>
+        <div>
+            <select class="form-control" name="select-subsection">
+                <option selected="selected">-choose-</option>
+                <option value="terms">terms</option>
+                <option value="terms/contexts">terms/contexts</option>
+                <option value="terms/similar_terms">terms/similar_terms</option>
+            </select>
+        </div>
+        <div>
+            <div>
+                term: <input name="term" type="text" class="form-control" placeholder="input a term here"><span
+                    data-ask-target="term" class="glyphicon glyphicon-question-sign"></span>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div>
+            Response Content Type:
+            <select class="form-control" name="responseContentType">
+                <option value="application/json">application/json</option>
+            </select><span data-ask-target="responseContentType" class="glyphicon glyphicon-question-sign"></span>
+        </div>
+        <div>
+            Retina name:
+            <select class="form-control" name="retina_name">
+                <option selected="selected" value="">-choose-</option>
+                <option value="en_associative">en_associative</option>
+                <option value="en_synonymous">en_synonymous</option>
+            </select>
+            <span data-ask-target="retina_name" class="glyphicon glyphicon-question-sign"></span>
+        </div>
+    </div>
+    <main>
+        <section id="section-api_params">
+            <div class="clearfix">
+                <div>
+                    context_id: <input name="context_id" type="text" class="form-control"><span
+                        data-ask-target="context_id" class="glyphicon glyphicon-question-sign"></span></div>
+            </div>
+            <div class="clearfix">
+                <div>
+                    start_index: <input name="start_index" type="text" class="form-control"><span
+                        data-ask-target="start_index" class="glyphicon glyphicon-question-sign"></span></div>
+                <div>
+                    max_results: <input name="max_results" type="text" class="form-control" value="10"><span
+                        data-ask-target="max_results" class="glyphicon glyphicon-question-sign"></span></div>
+            </div>
+            <div class="clearfix">
+                <div>
+                    pos_type:
+                    <select class="form-control" name="pos_type">
+                        <option selected="" value=""></option>
+                        <option value="NOUN">NOUN</option>
+                        <option value="ADJECTIVE">ADJECTIVE</option>
+                        <option value="VERB">VERB</option>
+                    </select><span data-ask-target="pos_type" class="glyphicon glyphicon-question-sign"></span></div>
+                <div>
+                    get_fingerprint:
+                    <select class="form-control" name="get_fingerprint">
+                        <option selected="selected" value="true">true</option>
+                        <option value="false">false (default)</option>
+                    </select><span data-ask-target="get_fingerprint" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+            </div>
+        </section>
+    </main>-->
+
+    <!--<div class="clearfix">
+        <h2 class="pull-left gap-right" style="background-color: transparent;">
+            Text </h2>
+        <div>
+            <select class="form-control" name="select-subsection">
+                <option selected="selected">-choose-</option>
+                <option value="text">text</option>
+                <option value="text/keywords">text/keywords</option>
+                <option value="text/tokenize">text/tokenize</option>
+                <option value="text/slices">text/slices</option>
+                <option value="text/bulk">text/bulk</option>
+                <option value="text/detect_language">text/detect_language</option>
+            </select>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div>
+            Response Content Type:
+            <select class="form-control" name="responseContentType">
+                <option value="application/json">application/json</option>
+            </select><span data-ask-target="responseContentType" class="glyphicon glyphicon-question-sign"></span></div>
+        <div>
+            Retina name:
+            <select class="form-control" name="retina_name">
+                <option selected="selected" value="">-choose-</option>
+                <option value="en_associative">en_associative</option>
+                <option value="en_synonymous">en_synonymous</option>
+            </select><span data-ask-target="retina_name" class="glyphicon glyphicon-question-sign"></span>
+        </div>
+    </div>
+    <div class="clearfix" id="textarea-container">
+        <div>
+            Body:&nbsp;
+            <textarea name="body" class="form-control" placeholder="(required)">		</textarea>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div>
+            POStags: <input name="POStags" type="text" class="form-control" placeholder="Specify desired POS types" value="POStags">
+            <span data-ask-target="wide gap-right" class="glyphicon glyphicon-question-sign">
+            </span>
+        </div>
+    </div>
+    <main>
+        <section id="section-api_params">
+            <div class="clearfix">
+                <div>
+                    start_index: <input name="start_index" type="text" class="form-control">
+                    <span data-ask-target="start_index" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+                <div>
+                    max_results: <input name="max_results" type="text" class="form-control" value="10">
+                    <span data-ask-target="max_results" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div>
+                    get_fingerprint:
+                    <select class="form-control" name="get_fingerprint">
+                        <option selected="selected" value="true">true</option>
+                        <option value="false">false (default)</option>
+                    </select><span data-ask-target="get_fingerprint" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+            </div>
+        </section>
+    </main>-->
+
+    <!--<div class="clearfix">
+        <h2 class="pull-left gap-right" style="background-color: transparent;">Expression </h2>
+        <div>
+            <select class="form-control" name="select-subsection">
+                <option selected="selected">-choose-</option>
+                <option value="expressions">expressions</option>
+                <option value="expressions/contexts">expressions/contexts</option>
+                <option value="expressions/similar_terms">expressions/similar_terms</option>
+                <option value="expressions/bulk">expressions/bulk</option>
+                <option value="expressions/contexts/bulk">expressions/contexts/bulk</option>
+                <option value="expressions/similar_terms/bulk">expressions/similar_terms/bulk</option>
+            </select>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div>
+            Response Content Type:
+            <select class="form-control" name="responseContentType">
+                <option value="application/json">application/json</option>
+            </select><span data-ask-target="responseContentType" class="glyphicon glyphicon-question-sign"></span>
+        </div>
+        <div>
+            Retina name:
+            <select class="form-control" name="retina_name">
+                <option selected="selected" value="">-choose-</option>
+                <option value="en_associative">en_associative</option>
+                <option value="en_synonymous">en_synonymous</option>
+            </select><span data-ask-target="retina_name" class="glyphicon glyphicon-question-sign"></span>
+        </div>
+    </div>
+    <div class="clearfix" id="textarea-container">
+        <div>
+            Body:&nbsp;
+            <textarea name="body" class="form-control" placeholder="(required)">		</textarea>
+        </div>
+    </div>
+    <main>
+        <section id="section-api_params">
+            <div class="clearfix">
+                <div>
+                    context_id: <input name="context_id" type="text" class="form-control">
+                    <span
+                        data-ask-target="context_id" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div>
+                    start_index: <input name="start_index" type="text" class="form-control">
+                    <span
+                        data-ask-target="start_index" class="glyphicon glyphicon-question-sign"></span></div>
+                <div>
+                    max_results: <input name="max_results" type="text" class="form-control" value="10"><span
+                        data-ask-target="max_results" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div>
+                    pos_type:
+                    <select class="form-control" name="pos_type">
+                        <option selected="" value=""></option>
+                        <option value="NOUN">NOUN</option>
+                        <option value="ADJECTIVE">ADJECTIVE</option>
+                        <option value="VERB">VERB</option>
+                    </select><span data-ask-target="pos_type" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+                <div>
+                    get_fingerprint:
+                    <select class="form-control" name="get_fingerprint">
+                        <option selected="selected" value="true">true</option>
+                        <option value="false">false (default)</option>
+                    </select>
+                    <span data-ask-target="get_fingerprint" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+            </div>
+        </section>
+    </main>-->
+
+    <!--<div class="clearfix">
+        <h2 class="pull-left gap-right">Compare </h2>
+        <div>
+            <select class="form-control" name="select-subsection">
+                <option selected="selected">-choose-</option>
+                <option value="compare">compare</option>
+                <option value="compare/bulk">compare/bulk</option>
+            </select>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div>
+            Response Content Type:
+            <select class="form-control" name="responseContentType">
+                <option value="application/json">application/json</option>
+            </select><span data-ask-target="responseContentType" class="glyphicon glyphicon-question-sign"></span></div>
+        <div>
+            Retina name:
+            <select class="form-control" name="retina_name">
+                <option selected="selected" value="">-choose-</option>
+                <option value="en_associative">en_associative</option>
+                <option value="en_synonymous">en_synonymous</option>
+            </select><span data-ask-target="retina_name" class="glyphicon glyphicon-question-sign"></span></div>
+    </div>
+    <div class="clearfix" id="textarea-container">
+        <div>
+            Body:&nbsp;
+            <textarea name="body" class="form-control" placeholder="(required)">		</textarea>
+        </div>
+    </div>
+    <main>
+        <section id="section-api_params">
+        </section>
+    </main>-->
+
+    <!--<div class="clearfix">
+        <h2 class="pull-left gap-right" style="background-color: transparent;">Image</h2>
+        <div>
+            <select class="form-control" name="select-subsection">
+                <option selected="selected">-choose-</option>
+                <option value="image">image</option>
+                <option value="image/compare">image/compare</option>
+                <option value="image/bulk">image/bulk</option>
+            </select>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div>
+            Response Content Type:
+            <select class="form-control" name="responseContentType">
+                <option value="application/json">application/json</option>
+            </select><span data-ask-target="responseContentType" class="glyphicon glyphicon-question-sign"></span></div>
+        <div>
+            Retina name:
+            <select class="form-control" name="retina_name">
+                <option selected="selected" value="">-choose-</option>
+                <option value="en_associative">en_associative</option>
+                <option value="en_synonymous">en_synonymous</option>
+            </select><span data-ask-target="retina_name" class="glyphicon glyphicon-question-sign"></span></div>
+    </div>
+    <div class="clearfix" id="textarea-container">
+        <div>
+            Body:&nbsp;
+            <textarea name="body" class="form-control" placeholder="(required)">		</textarea>
+        </div>
+    </div>
+    <main>
+        <section id="section-api_params">
+            <div class="clearfix">
+                <div>
+                    get_fingerprint:
+                    <select class="form-control" name="get_fingerprint">
+                        <option selected="selected" value="true">true</option>
+                        <option value="false">false (default)</option>
+                    </select><span data-ask-target="get_fingerprint" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div>
+                    image_scalar:
+                    <select class="form-control" name="image_scalar">
+                        <option selected="" value="2">2 (default)</option>
+                        <option value="5">5</option>
+                    </select><span data-ask-target="image_scalar" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+                <div>
+                    plot_shape:
+                    <select class="form-control" name="plot_shape">
+                        <option selected="" value="circle">circle (default)</option>
+                        <option value="square">square</option>
+                    </select><span data-ask-target="plot_shape" class="glyphicon glyphicon-question-sign"></span></div>
+                <div>
+                    image_encoding:
+                    <select class="form-control" name="image_encoding">
+                        <option selected="" value="base64/png">base64/png (default)</option>
+                        <option value=" binary/png"> binary/png</option>
+                    </select><span data-ask-target="image_encoding" class="glyphicon glyphicon-question-sign"></span>
+                </div>
+            </div>
+        </section>
+    </main>-->
+
+    <!--<div class="clearfix">
+        <h2 class="pull-left gap-right">Classify </h2>
+    </div>
+    <div class="clearfix">
+        <div>
+            Response Content Type:
+            <select class="form-control" name="responseContentType">
+                <option value="application/json">application/json</option>
+            </select><span data-ask-target="responseContentType" class="glyphicon glyphicon-question-sign"></span></div>
+        <div>
+            Retina name:
+            <select class="form-control" name="retina_name">
+                <option selected="selected" value="">-choose-</option>
+                <option value="en_associative">en_associative</option>
+                <option value="en_synonymous">en_synonymous</option>
+            </select><span data-ask-target="retina_name" class="glyphicon glyphicon-question-sign"></span>
+        </div>
+        <div>
+            <div>
+                filter_name: <input name="filter_name" type="text" class="form-control" minlength="1"
+                                    placeholder="(required)" value="Filter name">
+            </div>
+        </div>
+    </div>
+    <div class="clearfix" id="textarea-container">
+        <div>
+            Body:&nbsp;
+            <textarea name="body" class="form-control" placeholder="(required)">		</textarea>
+        </div>
+    </div>
+    <main>
+        <section id="section-api_params">
+        </section>
+        <div id="help-contents">
+            <section id="description-term" class="collapse">
+                <span>+</span>
+                <h4>Term</h4>
+                <p>A term in the retina</p></section>
+            <section id="description-responseContentType" class="collapse">
+                <span>+</span>
+                <h4>Response Content Type</h4>
+                <p>Defines what type of data will come from the server. Currently it is only JSON.</p></section>
+            <section id="description-retina_name" class="collapse">
+                <span>+</span>
+                <h4>Retina Name</h4>
+                <p>Retina used for word space models. It allows to compute distances between terms, which can be used to
+                    determine the degree of similarity between terms.</p>
+                <p>There are two types of retina:</p>
+                <ol>
+                    <li>en_synonymous</li>
+                    <p>An english language retina focusing on synonymous similarity.</p>
+                    <li>en_associative</li>
+                    <p>An english language retina balancing synonymous and associative similarity.</p>
+                </ol>
+            </section>
+            <section id="description-context_id" class="collapse">
+                <span>+</span>
+                <h4>Context id</h4>
+                <p>The identifier of a context</p></section>
+            <section id="description-start_index" class="collapse">
+                <span>+</span>
+                <h4>Start index</h4>
+                <p>The start-index for pagination</p></section>
+            <section id="description-max_results" class="collapse">
+                <span>+</span>
+                <h4>Max results</h4>
+                <p>Max results per page</p></section>
+            <section id="description-pos_type" class="collapse">
+                <span>+</span>
+                <h4>Pos type</h4>
+                <p>Part of speech</p></section>
+            <section id="description-get_fingerprint" class="collapse">
+                <span>+</span>
+                <h4>Get fingerprint</h4>
+                <p>Configure if the fingerprint should be returned as part of the results</p></section>
+        </div>
+    </main>-->
+
+
+    <input type="hidden" name="option" value="{{section}}">
+    <br>
+    <button type="submit" class="btn">Get data!</button>
+</form>
