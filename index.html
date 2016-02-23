@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="App" ng-controller="defaultCtrl">
 <head>
   <meta charset="UTF-8">
-  <title>Home</title>
+  <title ng-bind="title"></title>
   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-theme.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/default.css">
   <script src="assets/js/libs/jquery.min.js"></script>
   <script src="assets/js/libs/bootstrap.min.js"></script>
-  <script src="assets/js/default.js"></script>
+  <script src="assets/bower_components/angular/angular.min.js"></script>
+  <script src="assets/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 </head>
-<body>
+<body ng-cloak>
 <div class="container">
   <nav class="row navbar">
-    <ul class="nav navbar-nav pull-right">
-
+    <ul class="nav navbar-nav pull-right" ng-controller="menuCtrl">
+        <li ng-repeat="(text, url) in menus"><a ui-sref="contents.{{url}}">{{text}}</a></li>
     </ul>
     <h1 class="pull-left">
-      <a href="/"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span><b>Retina</b>.client</a>
+      <a ui-sref="home"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span><b>Retina</b>.client</a>
       <div id="powered">Powered by <a href="http://cortical.io">cortical.io</a></div>
     </h1>
     <div id="visual-circuits"></div>
@@ -25,8 +26,13 @@
 </div>
 <div class="container" id="content">
   <div class="row">
-    <div ng-view></div>
+    <div ui-view="home"></div>
+    <div ui-view="contents"></div>
   </div>
 </div>
+<script src="app/scripts/app.js"></script>
+<script src="app/scripts/controllers/defaultCtrl.js"></script>
+<script src="app/scripts/controllers/menuCtrl.js"></script>
+<script src="app/scripts/controllers/termCtrl.js"></script>
 </body>
 </html>
