@@ -1,1 +1,0 @@
-<?php setTextArea('Body', 'body', array('placeholder'=>'(required)'));
