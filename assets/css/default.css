@@ -7,6 +7,7 @@ body
     >.container:first-child
         nav{
     margin-bottom: 10px;
+    min-height: 70px;
 }
 body
     >.container:first-child
@@ -20,7 +21,6 @@ nav
         li
             a{
     display: table-cell;
-    height: 70px;
     vertical-align: middle;
 }
 main{
@@ -175,7 +175,7 @@ span.glyphicon.glyphicon-question-sign{
     margin-top:0;
 }
 #powered{
-    bottom: -18px;
+    bottom: -14px;
     color: #999;
     font-size: 0.35em;
     right: -55px;
@@ -193,6 +193,9 @@ span.glyphicon.glyphicon-question-sign{
     margin-right: -108px;
     max-width: 100%;
     width: 600px;
+}
+#top-menu{
+    transform: translateY(16px);    
 }
 #visual-circuits{
     position: absolute;

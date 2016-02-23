@@ -14,7 +14,7 @@
 <body ng-cloak>
 <div class="container">
   <nav class="row navbar">
-    <ul class="nav navbar-nav pull-right" ng-controller="menuCtrl">
+    <ul id="top-menu" class="nav navbar-nav pull-right" ng-controller="menuCtrl">
         <li ng-repeat="(text, url) in menus"><a ui-sref="contents.{{url}}">{{text}}</a></li>
     </ul>
     <h1 class="pull-left">
