@@ -21,18 +21,16 @@
       <a ui-sref="home"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span><b>Retina</b>.client</a>
       <div id="powered">Powered by <a href="http://cortical.io">cortical.io</a></div>
     </h1>
-    <div id="visual-circuits"></div>
   </nav>
 </div>
 <div class="container" id="content">
   <div class="row">
-    <div ui-view="home"></div>
-    <div ui-view="contents"></div>
+    <div ui-view ng-controller="contentsCtrl"></div>
   </div>
 </div>
 <script src="app/scripts/app.js"></script>
 <script src="app/scripts/controllers/defaultCtrl.js"></script>
 <script src="app/scripts/controllers/menuCtrl.js"></script>
-<script src="app/scripts/controllers/termCtrl.js"></script>
+<script src="app/scripts/services/selectService.js"></script>
 </body>
 </html>

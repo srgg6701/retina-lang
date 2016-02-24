@@ -6,11 +6,11 @@ app.config(function($stateProvider, $urlRouterProvider){
     $stateProvider
         .state('home',{
             url: "/home",
-            views: { home: {templateUrl: 'app/templates/home.html'} }
+            templateUrl: 'app/templates/home.html'
         })
         .state('contents',{
             abstract: true,
-            views: { contents: {templateUrl: 'app/templates/contents.html'} }
+            templateUrl: 'app/templates/contents.html'
         })
         .state('contents.retina',{
             url: "/retina"

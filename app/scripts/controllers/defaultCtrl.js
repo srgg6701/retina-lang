@@ -1,20 +1,14 @@
 "use strict";
 
-app.controller('defaultCtrl', function($scope, $state, $rootScope, testFactory){
-    //console.log('defaultCtrl works, url:', $state.current);
+app.controller('defaultCtrl', function($scope, $state, $rootScope){
+
     $rootScope.$on('$stateChangeStart',
         function(event, toState, toParams, fromState, fromParams, options){
+            $scope.section = toState.name.split('.').pop(); //console.log('section', $scope.section);
             // make page title
-            $scope.title = toState.name.charAt(0).toUpperCase() + toState.name.slice(1);
-            console.log('event, toState, toParams, fromState, fromParams, options',
-            {   event:event, toState:toState, toParams:toParams,
-                fromState:fromState, fromParams:fromParams, options:options });
-
-            $scope.section = toState.name;
+            $scope.title = $scope.section.charAt(0).toUpperCase() + $scope.section.slice(1);
             if(toState.name=='home'){
             }else{
-                $scope.section = toState.name.split('.').pop();
-                console.log('$scope.section', $scope.section);
                 switch ($scope.section) {
                     case 'retina':
 
@@ -41,5 +35,11 @@ app.controller('defaultCtrl', function($scope, $state, $rootScope, testFactory){
             }
 
         });
-    console.log('testFactory', testFactory);
+});
+app.controller('contentsCtrl', function($scope, $rootScope, selects){
+    $rootScope.$on('$stateChangeStart',
+        function(event, toState, toParams, fromState, fromParams, options){
+            $scope.section = toState.name.split('.').pop();
+            $scope.select = selects[$scope.section];
+        });
 });
