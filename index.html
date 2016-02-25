@@ -1,32 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="App" ng-controller="defaultCtrl">
 <head>
-  <meta charset="UTF-8">
-  <title ng-bind="title"></title>
-  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/default.css">
-  <script src="assets/js/libs/jquery.min.js"></script>
-  <script src="assets/js/libs/bootstrap.min.js"></script>
-  <script src="assets/bower_components/angular/angular.min.js"></script>
-  <script src="assets/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title ng-bind="title"></title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/default.css">
+    <script src="assets/js/libs/jquery.min.js"></script>
+    <script src="assets/js/libs/bootstrap.min.js"></script>
+    <script src="assets/bower_components/angular/angular.min.js"></script>
+    <script src="assets/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <!--<script src="assets/js/default.js"></script>-->
 </head>
 <body ng-cloak>
 <div class="container">
-  <nav class="row navbar">
-    <ul id="top-menu" class="nav navbar-nav pull-right" ng-controller="menuCtrl">
-        <li ng-repeat="(text, url) in menus"><a ui-sref="contents.{{url}}">{{text}}</a></li>
-    </ul>
-    <h1 class="pull-left">
-      <a ui-sref="home"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span><b>Retina</b>.client</a>
-      <div id="powered">Powered by <a href="http://cortical.io">cortical.io</a></div>
-    </h1>
-  </nav>
+    <nav class="row navbar bs-docs-nav">
+        <div class="navbar-header pull-right">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul id="top-menu" class="nav navbar-nav pull-right" ng-controller="menuCtrl">
+                <li ng-repeat="(text, url) in menus"><a ui-sref="contents.{{url}}">{{text}}</a></li>
+            </ul>
+        </div>
+        <h1 class="pull-left">
+            <a ui-sref="home"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span><b>Retina</b>.client</a>
+            <div id="powered">Powered by <a href="http://cortical.io">cortical.io</a></div>
+        </h1>
+    </nav>
 </div>
 <div class="container" id="content">
-  <div class="row">
-    <div ui-view ng-controller="contentsCtrl"></div>
-  </div>
+    <div class="row">
+        <div ui-view ng-controller="contentsCtrl"></div>
+    </div>
 </div>
 <script src="app/scripts/app.js"></script>
 <script src="app/scripts/controllers/defaultCtrl.js"></script>

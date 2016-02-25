@@ -13,6 +13,7 @@ body
     >.container:first-child
         nav
             h1{
+    background-color: white;
     position:relative;
     margin-top: 16px;
 }
@@ -95,6 +96,9 @@ span.glyphicon.glyphicon-question-sign{
     display: block;
     float: none;
 }
+.bs-docs-nav .navbar-toggle .icon-bar{
+    background-color: #337AB7;
+}
 .clearfix{
     clear:both;
 }
@@ -107,11 +111,25 @@ span.glyphicon.glyphicon-question-sign{
 .clear-both{
     clear:both;
 }
+.form-control{
+    display: inline-block;
+    width: auto;
+}
 .gap-left{
     margin-left:20px;
 }
 .gap-right{
     margin-right:20px;
+}
+.nowrap{
+    white-space: nowrap;
+}
+.navbar-collapse.collapse{
+    float: right;
+    /* margin-left: -100%; */
+}
+.nowrap > span:first-child::after{
+    content: ":";
 }
 .pull-left
     textarea{
@@ -206,4 +224,40 @@ span.glyphicon.glyphicon-question-sign{
     right: 0;
     bottom: -11px;
     z-index: -1;
+}
+/* media queries */
+@media (max-width:1023px){
+    #top-menu>li>a{
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        display: block;
+    }
+}
+@media (max-width:767px){
+    .bs-docs-nav>h1{
+        font-size: 2.7rem;
+        position: absolute !important;
+        top: 0;
+    }
+    .navbar-collapse.collapse, #top-menu{
+        float: left;
+        padding-left: 0;
+        width: 100%;
+    }
+    #top-menu{
+        margin-top: 10px;
+        transform: translateX(-15px);
+    }
+    body > .container{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+@media (max-width:399px){
+    .nowrap > span:first-child{
+        display: block;
+    }
+    .form-control{
+        padding-left: 0;
+    }
 }
