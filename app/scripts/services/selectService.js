@@ -1,3 +1,4 @@
+"use strict";
 app.value('selects', {
     term:{
         'terms':'terms',
@@ -19,6 +20,10 @@ app.value('selects', {
         'expressions/bulk':'expressions/bulk',
         'expressions/contexts/bulk':'expressions/contexts/bulk',
         'expressions/similar_terms/bulk':'expressions/similar_terms/bulk'
+    },
+    compare:{
+        'compare':'compare',
+        'compare/bulk':'compare/bulk'
     },
     image:{
         'image':'image',

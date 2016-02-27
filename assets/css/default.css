@@ -17,6 +17,9 @@ body
     position:relative;
     margin-top: 16px;
 }
+button[type="submit"]{
+    margin-bottom: 20px;
+}
 nav
     ul.nav
         li
@@ -84,9 +87,7 @@ span.glyphicon.glyphicon-question-sign{
     -o-transform: translateY(4px);
     margin-left: 6px;
 }
-[name="form-api-data"]{
-    padding-top: 20px;
-}
+
 [name="form-api-data"] >.clearfix:first-child{
     min-height:54px;
 }
@@ -102,6 +103,10 @@ span.glyphicon.glyphicon-question-sign{
 .clearfix{
     clear:both;
 }
+.clearfix
+    >div{
+        max-width:100%;
+    }
 .clearfix
     >div:not(.block){
     float: left;
@@ -126,10 +131,12 @@ span.glyphicon.glyphicon-question-sign{
 }
 .navbar-collapse.collapse{
     float: right;
-    /* margin-left: -100%; */
 }
 .nowrap > span:first-child::after{
     content: ":";
+}
+.padding-common{
+    padding:15px;
 }
 .pull-left
     textarea{
@@ -138,13 +145,22 @@ span.glyphicon.glyphicon-question-sign{
     max-width: 100%;
     width: 600px !important;
 }
+.right-space{
+    margin-right: 4px;
+}
+.text-danger{
+    color:red;
+}
+.visible{
+    display: inherit !important;
+}
 /* -------------------- */
 #content-box{
     clear:both;
 }
 #content
     h2{
-    margin-bottom: 0;
+    margin-bottom: 22px;
     margin-top: 0;
     padding-bottom: 0;
 }
@@ -163,7 +179,7 @@ span.glyphicon.glyphicon-question-sign{
     margin-top:0;
 }
 #help-contents{
-    position:absolute;
+    position: fixed;
     bottom:0;
     overflow-y: auto;
     overflow-x: hidden;
@@ -171,26 +187,37 @@ span.glyphicon.glyphicon-question-sign{
     max-height: 100%;
     max-width:600px;
     width:100%;
+    z-index: 1;
 }
-#help-contents
-    section.collapse{
+#help-contents section.collapse{
     background-color: #7AA8D0;
     border-radius: 4px;
     color: white;
-    margin-bottom: 5px;
-    padding: 15px;
-    transition:opacity 0.3s ease;
+    display: list-item;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: all 0.3s ease;
 }
-#help-contents
-    section.collapse:hover{
+#help-contents section.collapse:hover{
     background-color: #337AB7;
-    /*opacity:1;*/
 }
-#help-contents
-    section.collapse
-        h4{
+#help-contents section.collapse h4{
     font-weight:900;
     margin-top:0;
+}
+#help-contents section.visible{
+    display: block !important;
+    height: auto;
+    margin-bottom: 1px;
+    opacity: 1;
+    padding: 15px;
+    transition: opacity 0.3s ease;
+}
+
+#params-body{
+    width: 100%;
 }
 #powered{
     bottom: -14px;
@@ -203,14 +230,10 @@ span.glyphicon.glyphicon-question-sign{
 #pre-raw-data{
     margin-top:15px;
 }
-#textarea-container{
-    max-width: 100%;
-    width: 600px;
-}
-#textarea-container textarea{
-    margin-right: -108px;
-    max-width: 100%;
-    width: 600px;
+textarea[name="body"]{
+    float: left;
+    width: calc(100% - 24px) !important;
+    max-width: 600px !important;
 }
 #top-menu{
     transform: translateY(16px);    
@@ -259,5 +282,18 @@ span.glyphicon.glyphicon-question-sign{
     }
     .form-control{
         padding-left: 0;
+    }
+    #params-body{
+        clear: both;
+        float: none;
+    }
+}
+@media (min-width:400px){
+    #params-body{
+        float: left;
+        max-width: calc(100% - 70px);
+    }
+    textarea[name="body"]{
+        width: 100%;
     }
 }

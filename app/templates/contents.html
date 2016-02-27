@@ -1,177 +1,59 @@
-<!-- style="background-color: transparent;"-->
 <form class="form-inline" name="form-api-data" method="post">
     <div class="clearfix">
-        <h2 class="pull-left gap-right">
-            {{title}}
-        </h2>
-        <div ng-if="section==('term'||'text'||'expression'||'compare'||'image')">
-            <select class="form-control" name="select-subsection">
-                <option selected="selected">-choose-</option>
-                <option ng-repeat="(option, text) in select" value="{{option}}">{{text}}</option>
-            </select>
-        </div>
-        <div ng-if="section==('term'||'text'||'expression'||'compare'||'image')">
-            <div>term:
-                <input name="term" type="text" class="form-control" placeholder="input a term here">
-                <span data-ask-target="term" class="glyphicon glyphicon-question-sign"></span>
-            </div>
-        </div>
+        <h2>{{title}}</h2>
+        <div ng-include="'app/templates/subtemplates/select-subsection.html'"
+             ng-if="section=='term'||section=='expression'||section=='compare'||section=='image'||section=='text'"
+             class="nowrap"></div>
+        <div ng-include="'app/templates/subtemplates/term.html'" ng-if="section=='term'" class="nowrap"></div>
     </div>
     <div class="clearfix">
-        <div>Response Content Type:
-            <select class="form-control" name="responseContentType">
-                <option value="application/json">application/json</option>
-            </select>
-            <span data-ask-target="responseContentType" class="glyphicon glyphicon-question-sign"></span>
-        </div>
-        <div>Retina name:
-            <select class="form-control" name="retina_name">
-                <option selected="selected" value="">-choose-</option>
-                <option value="en_associative">en_associative</option>
-                <option value="en_synonymous">en_synonymous</option>
-            </select>
-            <span data-ask-target="retina_name" class="glyphicon glyphicon-question-sign"></span>
-        </div>
-        <div ng-if="section=='classify'">
-            <div>filter_name:
-                <input name="filter_name" type="text" class="form-control" minlength="1" placeholder="(required)" value="Filter name">
-            </div>
-        </div>
+        <div ng-include="'app/templates/subtemplates/response-content-type.html'" class="nowrap"></div>
+        <div ng-include="'app/templates/subtemplates/retina-name.html'" class="nowrap"
+             ng-if="form.param!='text/detect_language'"></div>
+        <div ng-include="'app/templates/subtemplates/filter-name.html'" ng-if="section=='classify'" class="nowrap"></div>
     </div>
-    <div class="clearfix" id="textarea-container" ng-if="section==('text'||'expression'||'compare'||'image')">
-        <div>
-            Body:&nbsp;
-            <textarea name="body" class="form-control" placeholder="(required)"></textarea>
-        </div>
-    </div>
-    <div class="clearfix" ng-if="section==('text'||'expression'||'compare'||'image')">
-        <div>POStags:
-            <input name="POStags" type="text" class="form-control" placeholder="Specify desired POS types" value="POStags">
-            <span data-ask-target="wide gap-right" class="glyphicon glyphicon-question-sign"></span>
-        </div>
-    </div>
+    <div ng-include="'app/templates/subtemplates/textarea.html'" class="clearfix nowrap" id="textarea-container"
+         ng-if="section=='text'||section=='expression'||section=='compare'||section=='image'||section=='classify'"></div>
+    <div ng-include="'app/templates/subtemplates/postags.html'" class="clearfix nowrap" ng-if="form.param=='text/tokenize'"></div>
     <main>
         <section id="section-api_params">
-            <div class="clearfix" ng-if="section==('term'||'expression')">
-                <div>context_id:
-                    <input name="context_id" type="text" class="form-control">
-                    <span data-ask-target="context_id" class="glyphicon glyphicon-question-sign"></span>
-                </div>
+            <div class="clearfix">
+                <div ng-include="'app/templates/subtemplates/context-id.html'" class="nowrap" ng-if="form.param=='terms/similar_terms'||form.param=='expressions/similar_terms'||form.param=='expressions/similar_terms/bulk'"></div>
             </div>
-            <div class="clearfix" ng-if="section==('term'||'expression')">
-                <div>start_index:
-                    <input name="start_index" type="text" class="form-control">
-                    <span data-ask-target="start_index" class="glyphicon glyphicon-question-sign"></span>
-                </div>
-                <div>max_results:
-                    <input name="max_results" type="text" class="form-control" value="10">
-                    <span data-ask-target="max_results" class="glyphicon glyphicon-question-sign"></span></div>
+            <div class="clearfix" ng-if="section=='term'||section=='text'||section=='expression'||section=='image'">
+                <div ng-include="'app/templates/subtemplates/start-index.html'"
+                     ng-if="section=='term'||form.param=='text/slices'||form.param=='expressions/contexts'||form.param=='expressions/similar_terms'||form.param=='expressions/contexts/bulk'||form.param=='expressions/similar_terms/bulk'"
+                     class="nowrap"></div>
+                <div ng-include="'app/templates/subtemplates/max-results.html'"
+                     ng-if="section=='term'||form.param=='text/slices'||form.param=='expressions/contexts'||form.param=='expressions/similar_terms'||form.param=='expressions/contexts/bulk'||form.param=='expressions/similar_terms/bulk'"
+                     class="nowrap"></div>
+                <div ng-include="'app/templates/subtemplates/pos-type.html'"
+                     ng-if="form.param=='terms/similar_terms'||form.param=='expressions/similar_terms'||form.param=='expressions/similar_terms/bulk'"
+                     class="nowrap"></div>
+                <div ng-include="'app/templates/subtemplates/get-fingerprint.html'"
+                     ng-if="section=='term'||form.param=='text/slices'||form.param=='expressions/contexts'||form.param=='expressions/similar_terms'||form.param=='expressions/contexts/bulk'||form.param=='expressions/similar_terms/bulk'||form.param=='image/bulk'"
+                     class="nowrap"></div>
             </div>
-            <div class="clearfix" ng-if="section==('term'||'expression'||'image')">
-                <div ng-if="section!='image'">pos_type:
-                    <select class="form-control" name="pos_type">
-                        <option selected="" value=""></option>
-                        <option value="NOUN">NOUN</option>
-                        <option value="ADJECTIVE">ADJECTIVE</option>
-                        <option value="VERB">VERB</option>
-                    </select>
-                    <span data-ask-target="pos_type" class="glyphicon glyphicon-question-sign"></span>
-                </div>
-                <div>get_fingerprint:
-                    <select class="form-control" name="get_fingerprint">
-                        <option selected="selected" value="true">true</option>
-                        <option value="false">false (default)</option>
-                    </select>
-                    <span data-ask-target="get_fingerprint" class="glyphicon glyphicon-question-sign"></span>
-                </div>
-            </div>
-            <div class="clearfix" ng-if="section=='text'">
-                <div>start_index: <input name="start_index" type="text" class="form-control">
-                    <span data-ask-target="start_index" class="glyphicon glyphicon-question-sign"></span>
-                </div>
-                <div>max_results:
-                    <input name="max_results" type="text" class="form-control" value="10">
-                    <span data-ask-target="max_results" class="glyphicon glyphicon-question-sign"></span>
-                </div>
-            </div>
-            <div class="clearfix" ng-if="section=='text'">
-                <div>get_fingerprint:
-                    <select class="form-control" name="get_fingerprint">
-                        <option selected="selected" value="true">true</option>
-                        <option value="false">false (default)</option>
-                    </select>
-                    <span data-ask-target="get_fingerprint" class="glyphicon glyphicon-question-sign"></span>
-                </div>
-            </div>
-            <div class="clearfix" ng-if="section=='image'">
-                <div>image_scalar:
-                    <select class="form-control" name="image_scalar">
-                        <option selected="" value="2">2 (default)</option>
-                        <option value="5">5</option>
-                    </select>
-                    <span data-ask-target="image_scalar" class="glyphicon glyphicon-question-sign"></span>
-                </div>
-                <div>plot_shape:
-                    <select class="form-control" name="plot_shape">
-                        <option selected="" value="circle">circle (default)</option>
-                        <option value="square">square</option>
-                    </select>
-                    <span data-ask-target="plot_shape" class="glyphicon glyphicon-question-sign"></span></div>
-                <div>image_encoding:
-                    <select class="form-control" name="image_encoding">
-                        <option selected="" value="base64/png">base64/png (default)</option>
-                        <option value=" binary/png"> binary/png</option>
-                    </select>
-                    <span data-ask-target="image_encoding" class="glyphicon glyphicon-question-sign"></span>
-                </div>
+            <div class="clearfix">
+                <div ng-include="'app/templates/subtemplates/image-scalar.html'" class="nowrap"
+                     ng-if="section=='image'"></div>
+                <div ng-include="'app/templates/subtemplates/plot-shape.html'" class="nowrap"
+                     ng-if="section=='image'"></div>
+                <div ng-include="'app/templates/subtemplates/image-encoding.html'" class="nowrap"
+                     ng-if="section=='image'||form.param=='image'||form.param=='image/compare'"></div>
+                <div ng-include="'app/templates/subtemplates/sparsity.html'" class="clearfix nowrap"
+                     ng-if="section=='expression'||form.param=='text/bulk'||form.param=='image'||form.param=='image/bulk'"></div>
             </div>
         </section>
-        <!--help contents-->
-        <div id="help-contents">
-            <section id="description-term" class="collapse">
-                <span>+</span>
-                <h4>Term</h4>
-                <p>A term in the retina</p></section>
-            <section id="description-responseContentType" class="collapse">
-                <span>+</span>
-                <h4>Response Content Type</h4>
-                <p>Defines what type of data will come from the server. Currently it is only JSON.</p></section>
-            <section id="description-retina_name" class="collapse">
-                <span>+</span>
-                <h4>Retina Name</h4>
-                <p>Retina used for word space models. It allows to compute distances between terms, which can be used to
-                    determine the degree of similarity between terms.</p>
-                <p>There are two types of retina:</p>
-                <ol>
-                    <li>en_synonymous</li>
-                    <p>An english language retina focusing on synonymous similarity.</p>
-                    <li>en_associative</li>
-                    <p>An english language retina balancing synonymous and associative similarity.</p>
-                </ol>
-            </section>
-            <section id="description-context_id" class="collapse">
-                <span>+</span>
-                <h4>Context id</h4>
-                <p>The identifier of a context</p></section>
-            <section id="description-start_index" class="collapse">
-                <span>+</span>
-                <h4>Start index</h4>
-                <p>The start-index for pagination</p></section>
-            <section id="description-max_results" class="collapse">
-                <span>+</span>
-                <h4>Max results</h4>
-                <p>Max results per page</p></section>
-            <section id="description-pos_type" class="collapse">
-                <span>+</span>
-                <h4>Pos type</h4>
-                <p>Part of speech</p></section>
-            <section id="description-get_fingerprint" class="collapse">
-                <span>+</span>
-                <h4>Get fingerprint</h4>
-                <p>Configure if the fingerprint should be returned as part of the results</p></section>
-        </div>
+        <div ng-include="'app/templates/help-contents.html'" id="help-contents"></div>
     </main>
     <input type="hidden" name="option" value="{{section}}">
     <br>
-    <button type="submit" class="btn">Get data!</button>
+    <button type="submit" class="btn" ng-disabled="!form.param||!form.retinaName||!form.filterName||!form.body">Get data!</button>
 </form>
+<div class="bg-info padding-common">
+    <div>section: {{section}}</div>
+    <div>form.param: {{form.param}}</div>
+    <div>form.retinaName: {{form.retinaName}}</div>
+    <div>form.filterName: {{form.filterName}}</div>
+</div>

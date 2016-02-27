@@ -1,0 +1,8 @@
+<span ng-class="{'text-danger':!form.param}">Subsection</span>
+<label for="select-subsection">
+<select id="select-subsection" class="form-control" name="select-subsection" ng-model="form.param">
+    <option value="" selected="selected">-choose-</option>
+    <option ng-repeat="(text, option) in selectData" value="{{option}}">{{text}}</option>
+</select>
+</label>
+

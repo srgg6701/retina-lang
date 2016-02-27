@@ -1,0 +1,4 @@
+<section ng-repeat="(id, data) in helpData" id="description-{{id}}" class="collapse" ng-class="{'visible': helpvisible[id]}">
+    <span ng-click="helpvisible[id]=false">+</span>
+    <help-data-section sdata="data"  sid="{{id}}"></help-data-section>
+</section>

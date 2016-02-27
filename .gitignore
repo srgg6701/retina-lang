@@ -1,9 +1,9 @@
 php-client-sdk/.idea
 _notes
+.docs
 .idea
 .gitignore
 #*.php
-*.xlsx
 *.txt
 *.md
 #php-client-sdk

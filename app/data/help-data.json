@@ -1,0 +1,75 @@
+{
+  "body":{
+    "Body":[
+      "The list of positive and negative (optional) example items."
+    ]
+  },
+  "context_id":{
+    "Context id":[
+      "The identifier of a context."
+    ]
+  },
+  "filter_name":{
+    "Filter Name":[
+      "A unique name for the filter."
+    ]
+  },
+  "get_fingerprint":{
+    "Get fingerprint":[
+      "Configure if the fingerprint should be returned as part of the results."
+    ]
+  },
+  "max_results":{
+    "Max results":[
+      "Max results per page."
+    ]
+  },
+  "pos_type":{
+    "Pos type":[
+      "Part of speech."
+    ]
+  },
+  "postags":{
+    "POStags":[
+      "Specify desired POS types."
+    ]
+  },
+  "responseContentType":{
+    "Response Content Type":[
+      "Defines what type of data will come from the server. Currently it is only JSON."
+    ]
+  },
+  "retina_name":{
+    "Retina Name":[
+      "Retina used for word space models. It allows to compute distances between terms, which can be used to determine the degree of similarity between terms.",
+      "There are two types of retina:",
+      {
+        "ol": [
+          "en_synonymous",
+          [
+            "An english language retina focusing on synonymous similarity."
+          ],
+         "en_associative",
+          [
+            "An english language retina balancing synonymous and associative similarity."
+          ]
+        ]
+      }
+    ]
+  },
+  "sparsity":{
+    "Sparsity":[
+      "Sparsify the resulting expression to this percentage."
+    ]
+  },
+  "start_index":{
+    "Start index":[
+      "The start-index for pagination."
+    ]
+  },
+  "term":{
+    "Term":[
+      "A term in the retina"
+    ]
+  }
+}
