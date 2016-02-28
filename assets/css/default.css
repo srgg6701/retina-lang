@@ -1,7 +1,11 @@
+html{
+    height:100%;
+}
 body
     >.container:first-child{
     border-bottom: solid 3px rgba(51, 122, 183, 0.65);
     margin-bottom: 20px;
+    border: none;
 }
 body
     >.container:first-child
@@ -18,7 +22,11 @@ body
     margin-top: 16px;
 }
 button[type="submit"]{
+    color: white;
+    font-weight: bold;
     margin-bottom: 20px;
+    padding: 8px 30px;
+    background-color: rgba(51, 122, 183, 0.6);
 }
 nav
     ul.nav
@@ -103,10 +111,9 @@ span.glyphicon.glyphicon-question-sign{
 .clearfix{
     clear:both;
 }
-.clearfix
-    >div{
+.clearfix >div{
         max-width:100%;
-    }
+}
 .clearfix
     >div:not(.block){
     float: left;
@@ -115,6 +122,9 @@ span.glyphicon.glyphicon-question-sign{
 }
 .clear-both{
     clear:both;
+}
+.color-header{
+    color:#337ab7;
 }
 .form-control{
     display: inline-block;
@@ -125,6 +135,9 @@ span.glyphicon.glyphicon-question-sign{
 }
 .gap-right{
     margin-right:20px;
+}
+.overflow-hidden{
+    overflow: hidden;
 }
 .nowrap{
     white-space: nowrap;
@@ -151,6 +164,9 @@ span.glyphicon.glyphicon-question-sign{
 .text-danger{
     color:red;
 }
+.text-accent{
+    text-shadow: 2px 0px rgba(0,0,0,1);
+}
 .visible{
     display: inherit !important;
 }
@@ -158,11 +174,21 @@ span.glyphicon.glyphicon-question-sign{
 #content-box{
     clear:both;
 }
+#content{
+    min-height: calc(100% - 104px);
+    position: relative;
+}
 #content
     h2{
     margin-bottom: 22px;
     margin-top: 0;
     padding-bottom: 0;
+}
+#content > .row:first-child{
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    width: 100%;
 }
 #data-answer{
     background-color: aliceblue;
@@ -177,6 +203,14 @@ span.glyphicon.glyphicon-question-sign{
     > h4:first-child{
     color: #337AB7;
     margin-top:0;
+}
+#form-main{
+    background-color: rgba(51, 122, 183, 0.125);
+    border-radius: 4px;
+    border: solid 3px rgba(51,122,183,0.15);
+    display: table;
+    margin-bottom: 20px;
+    padding: 20px;
 }
 #help-contents{
     position: fixed;
@@ -215,7 +249,18 @@ span.glyphicon.glyphicon-question-sign{
     padding: 15px;
     transition: opacity 0.3s ease;
 }
-
+#illustration{
+    background-image: url(../images/pride-prejudice-color-closeup.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.35;
+    position: absolute;
+    right: 0;
+    top: 47px;
+    bottom: 4px;
+    left: 50%;
+    z-index: -1;
+}
 #params-body{
     width: 100%;
 }
@@ -238,6 +283,10 @@ textarea[name="body"]{
 #top-menu{
     transform: translateY(16px);    
 }
+#video-lead{
+    border: solid 1px rgb(122, 168, 208);
+    max-width: 100%;
+}
 #visual-circuits{
     position: absolute;
     background-size: cover;
@@ -247,6 +296,15 @@ textarea[name="body"]{
     right: 0;
     bottom: -11px;
     z-index: -1;
+}
+/* by sections */
+#section-Home h1.main-header{
+    margin-bottom: 26px;
+    overflow: hidden;
+}
+#section-Home h1.main-header .pull-right{
+    /* margin-right: 24px; */
+    font-size: 26px;
 }
 /* media queries */
 @media (max-width:1023px){

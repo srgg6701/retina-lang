@@ -37,8 +37,9 @@
     </nav>
 </div>
 <div class="container" id="content">
-    <div class="row">
+    <div class="row" id="section-{{title}}">
         <div ui-view ng-controller="contentsCtrl"></div>
+        <div id="illustration"></div>
     </div>
 </div>
 <script src="app/scripts/app.js"></script>

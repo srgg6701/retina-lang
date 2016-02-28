@@ -5,7 +5,7 @@ app.controller('defaultCtrl', function($scope, $state, $rootScope, manageData){
     var promise = manageData.getHelpData();
     promise.then(function(response) {
         $scope.helpData = response.data;
-        console.log('helpData', $scope.helpData);
+        //console.log('helpData', $scope.helpData);
     });
 
     $rootScope.$on('$stateChangeStart',
