@@ -1,6 +1,6 @@
-<form id="form-main" class="form-inline" name="form-api-data" method="post">
+<form id="form-main" class="form-inline" name="form-api-data" method="post" ng-submit="getRetinaData($event)">
     <div class="clearfix">
-        <h2>{{title}}</h2>
+        <h2>Section: <span class="color-white">{{title}}</span></h2>
         <div ng-include="'app/templates/subtemplates/select-subsection.html'"
              ng-if="section=='term'||section=='expression'||section=='compare'||section=='image'||section=='text'"
              class="nowrap"></div>
@@ -9,29 +9,29 @@
     <div class="clearfix">
         <div ng-include="'app/templates/subtemplates/response-content-type.html'" class="nowrap"></div>
         <div ng-include="'app/templates/subtemplates/retina-name.html'" class="nowrap"
-             ng-if="form.param!='text/detect_language'"></div>
+             ng-if="form.subsection!='text/detect_language'"></div>
         <div ng-include="'app/templates/subtemplates/filter-name.html'" ng-if="section=='classify'" class="nowrap"></div>
     </div>
     <div ng-include="'app/templates/subtemplates/textarea.html'" class="clearfix nowrap" id="textarea-container"
          ng-if="section=='text'||section=='expression'||section=='compare'||section=='image'||section=='classify'"></div>
-    <div ng-include="'app/templates/subtemplates/postags.html'" class="clearfix nowrap" ng-if="form.param=='text/tokenize'"></div>
+    <div ng-include="'app/templates/subtemplates/postags.html'" class="clearfix nowrap" ng-if="form.subsection=='text/tokenize'"></div>
     <main>
         <section id="section-api_params">
             <div class="clearfix">
-                <div ng-include="'app/templates/subtemplates/context-id.html'" class="nowrap" ng-if="form.param=='terms/similar_terms'||form.param=='expressions/similar_terms'||form.param=='expressions/similar_terms/bulk'"></div>
+                <div ng-include="'app/templates/subtemplates/context-id.html'" class="nowrap" ng-if="form.subsection=='terms/similar_terms'||form.subsection=='expressions/similar_terms'||form.subsection=='expressions/similar_terms/bulk'"></div>
             </div>
             <div class="clearfix" ng-if="section=='term'||section=='text'||section=='expression'||section=='image'">
                 <div ng-include="'app/templates/subtemplates/start-index.html'"
-                     ng-if="section=='term'||form.param=='text/slices'||form.param=='expressions/contexts'||form.param=='expressions/similar_terms'||form.param=='expressions/contexts/bulk'||form.param=='expressions/similar_terms/bulk'"
+                     ng-if="section=='term'||form.subsection=='text/slices'||form.subsection=='expressions/contexts'||form.subsection=='expressions/similar_terms'||form.subsection=='expressions/contexts/bulk'||form.subsection=='expressions/similar_terms/bulk'"
                      class="nowrap"></div>
                 <div ng-include="'app/templates/subtemplates/max-results.html'"
-                     ng-if="section=='term'||form.param=='text/slices'||form.param=='expressions/contexts'||form.param=='expressions/similar_terms'||form.param=='expressions/contexts/bulk'||form.param=='expressions/similar_terms/bulk'"
+                     ng-if="section=='term'||form.subsection=='text/slices'||form.subsection=='expressions/contexts'||form.subsection=='expressions/similar_terms'||form.subsection=='expressions/contexts/bulk'||form.subsection=='expressions/similar_terms/bulk'"
                      class="nowrap"></div>
                 <div ng-include="'app/templates/subtemplates/pos-type.html'"
-                     ng-if="form.param=='terms/similar_terms'||form.param=='expressions/similar_terms'||form.param=='expressions/similar_terms/bulk'"
+                     ng-if="form.subsection=='terms/similar_terms'||form.subsection=='expressions/similar_terms'||form.subsection=='expressions/similar_terms/bulk'"
                      class="nowrap"></div>
                 <div ng-include="'app/templates/subtemplates/get-fingerprint.html'"
-                     ng-if="section=='term'||form.param=='text/slices'||form.param=='expressions/contexts'||form.param=='expressions/similar_terms'||form.param=='expressions/contexts/bulk'||form.param=='expressions/similar_terms/bulk'||form.param=='image/bulk'"
+                     ng-if="section=='term'||form.subsection=='text/slices'||form.subsection=='expressions/contexts'||form.subsection=='expressions/similar_terms'||form.subsection=='expressions/contexts/bulk'||form.subsection=='expressions/similar_terms/bulk'||form.subsection=='image/bulk'"
                      class="nowrap"></div>
             </div>
             <div class="clearfix">
@@ -40,20 +40,20 @@
                 <div ng-include="'app/templates/subtemplates/plot-shape.html'" class="nowrap"
                      ng-if="section=='image'"></div>
                 <div ng-include="'app/templates/subtemplates/image-encoding.html'" class="nowrap"
-                     ng-if="section=='image'||form.param=='image'||form.param=='image/compare'"></div>
+                     ng-if="section=='image'||form.subsection=='image'||form.subsection=='image/compare'"></div>
                 <div ng-include="'app/templates/subtemplates/sparsity.html'" class="clearfix nowrap"
-                     ng-if="section=='expression'||form.param=='text/bulk'||form.param=='image'||form.param=='image/bulk'"></div>
+                     ng-if="section=='expression'||form.subsection=='text/bulk'||form.subsection=='image'||form.subsection=='image/bulk'"></div>
             </div>
         </section>
         <div ng-include="'app/templates/help-contents.html'" id="help-contents"></div>
     </main>
     <input type="hidden" name="option" value="{{section}}">
     <br>
-    <button type="submit" class="btn" ng-disabled="!form.param||!form.retinaName||!form.filterName||!form.body">Get data!</button>
+    <button type="submit" class="btn" ng-disabled="!form.subsection||!form.retinaName||!form.filterName||!form.body||form.termReq">Get data!</button>
 </form>
 <div class="bg-info padding-common pull-left">
     <div>section: {{section}}</div>
-    <div>form.param: {{form.param}}</div>
+    <div>form.subsection: {{form.subsection}}</div>
     <div>form.retinaName: {{form.retinaName}}</div>
     <div>form.filterName: {{form.filterName}}</div>
 </div>

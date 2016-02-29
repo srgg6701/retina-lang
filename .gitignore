@@ -1,12 +1,8 @@
-php-client-sdk/.idea
 _notes
 .docs
 .idea
 .gitignore
-#*.php
 *.txt
 *.md
-#php-client-sdk
 LICENSE
-#app/templates-php
 assets

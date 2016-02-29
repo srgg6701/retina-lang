@@ -123,6 +123,9 @@ span.glyphicon.glyphicon-question-sign{
 .clear-both{
     clear:both;
 }
+.color-white{
+    color: white;
+}
 .color-header{
     color:#337ab7;
 }
@@ -178,11 +181,18 @@ span.glyphicon.glyphicon-question-sign{
     min-height: calc(100% - 104px);
     position: relative;
 }
-#content
-    h2{
-    margin-bottom: 22px;
-    margin-top: 0;
-    padding-bottom: 0;
+#content h2{
+    background-color: #A0C1DD;
+    border-radius: 4px;
+    color: rgb(75, 116, 152);
+    font-size: 22px;
+    margin-bottom: 28px;
+    margin-top: -42px;
+    display: table;
+    padding: 10px 40px 10px 34px;
+}
+#content h2 span{
+    margin-left: 6px;
 }
 #content > .row:first-child{
     position: absolute;
@@ -210,6 +220,7 @@ span.glyphicon.glyphicon-question-sign{
     border: solid 3px rgba(51,122,183,0.15);
     display: table;
     margin-bottom: 20px;
+    margin-top: 20px;
     padding: 20px;
 }
 #help-contents{
