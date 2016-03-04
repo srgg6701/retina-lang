@@ -1,59 +1,59 @@
-<form id="form-main" class="form-inline" name="form-api-data" method="post" ng-submit="getRetinaData($event)">
+<form ng-model="formForm" id="form-main" class="form-inline" name="form-api-data" method="post" ng-submit="getRetinaData($event)">
     <div class="clearfix">
         <h2>Section: <span class="color-white">{{title}}</span></h2>
         <div ng-include="'app/templates/subtemplates/select-subsection.html'"
-             ng-if="section=='term'||section=='expression'||section=='compare'||section=='image'||section=='text'"
+             ng-if="endpoint=='term'||endpoint=='expression'||endpoint=='compare'||endpoint=='image'||endpoint=='text'"
              class="nowrap"></div>
-        <div ng-include="'app/templates/subtemplates/term.html'" ng-if="section=='term'" class="nowrap"></div>
+        <div ng-include="'app/templates/subtemplates/term.html'" ng-if="endpoint=='term'" class="nowrap"></div>
     </div>
     <div class="clearfix">
         <div ng-include="'app/templates/subtemplates/response-content-type.html'" class="nowrap"></div>
         <div ng-include="'app/templates/subtemplates/retina-name.html'" class="nowrap"
-             ng-if="form.subsection!='text/detect_language'"></div>
-        <div ng-include="'app/templates/subtemplates/filter-name.html'" ng-if="section=='classify'" class="nowrap"></div>
+             ng-if="form.section!='text/detect_language'"></div>
+        <div ng-include="'app/templates/subtemplates/filter-name.html'" ng-if="endpoint=='classify'" class="nowrap"></div>
     </div>
     <div ng-include="'app/templates/subtemplates/textarea.html'" class="clearfix nowrap" id="textarea-container"
-         ng-if="section=='text'||section=='expression'||section=='compare'||section=='image'||section=='classify'"></div>
-    <div ng-include="'app/templates/subtemplates/postags.html'" class="clearfix nowrap" ng-if="form.subsection=='text/tokenize'"></div>
+         ng-if="endpoint=='text'||endpoint=='expression'||endpoint=='compare'||endpoint=='image'||endpoint=='classify'"></div>
+    <div ng-include="'app/templates/subtemplates/postags.html'" class="clearfix nowrap" ng-if="form.section=='text/tokenize'"></div>
     <main>
-        <section id="section-api_params">
+        <endpoint id="endpoint-api_params">
             <div class="clearfix">
-                <div ng-include="'app/templates/subtemplates/context-id.html'" class="nowrap" ng-if="form.subsection=='terms/similar_terms'||form.subsection=='expressions/similar_terms'||form.subsection=='expressions/similar_terms/bulk'"></div>
+                <div ng-include="'app/templates/subtemplates/context-id.html'" class="nowrap" ng-if="form.section=='terms/similar_terms'||form.section=='expressions/similar_terms'||form.section=='expressions/similar_terms/bulk'"></div>
             </div>
-            <div class="clearfix" ng-if="section=='term'||section=='text'||section=='expression'||section=='image'">
+            <div class="clearfix" ng-if="endpoint=='term'||endpoint=='text'||endpoint=='expression'||endpoint=='image'">
                 <div ng-include="'app/templates/subtemplates/start-index.html'"
-                     ng-if="section=='term'||form.subsection=='text/slices'||form.subsection=='expressions/contexts'||form.subsection=='expressions/similar_terms'||form.subsection=='expressions/contexts/bulk'||form.subsection=='expressions/similar_terms/bulk'"
+                     ng-if="endpoint=='term'||form.section=='text/slices'||form.section=='expressions/contexts'||form.section=='expressions/similar_terms'||form.section=='expressions/contexts/bulk'||form.section=='expressions/similar_terms/bulk'"
                      class="nowrap"></div>
                 <div ng-include="'app/templates/subtemplates/max-results.html'"
-                     ng-if="section=='term'||form.subsection=='text/slices'||form.subsection=='expressions/contexts'||form.subsection=='expressions/similar_terms'||form.subsection=='expressions/contexts/bulk'||form.subsection=='expressions/similar_terms/bulk'"
+                     ng-if="endpoint=='term'||form.section=='text/slices'||form.section=='expressions/contexts'||form.section=='expressions/similar_terms'||form.section=='expressions/contexts/bulk'||form.section=='expressions/similar_terms/bulk'"
                      class="nowrap"></div>
                 <div ng-include="'app/templates/subtemplates/pos-type.html'"
-                     ng-if="form.subsection=='terms/similar_terms'||form.subsection=='expressions/similar_terms'||form.subsection=='expressions/similar_terms/bulk'"
+                     ng-if="form.section=='terms/similar_terms'||form.section=='expressions/similar_terms'||form.section=='expressions/similar_terms/bulk'"
                      class="nowrap"></div>
                 <div ng-include="'app/templates/subtemplates/get-fingerprint.html'"
-                     ng-if="section=='term'||form.subsection=='text/slices'||form.subsection=='expressions/contexts'||form.subsection=='expressions/similar_terms'||form.subsection=='expressions/contexts/bulk'||form.subsection=='expressions/similar_terms/bulk'||form.subsection=='image/bulk'"
+                     ng-if="endpoint=='term'||form.section=='text/slices'||form.section=='expressions/contexts'||form.section=='expressions/similar_terms'||form.section=='expressions/contexts/bulk'||form.section=='expressions/similar_terms/bulk'||form.section=='image/bulk'"
                      class="nowrap"></div>
             </div>
             <div class="clearfix">
                 <div ng-include="'app/templates/subtemplates/image-scalar.html'" class="nowrap"
-                     ng-if="section=='image'"></div>
+                     ng-if="endpoint=='image'"></div>
                 <div ng-include="'app/templates/subtemplates/plot-shape.html'" class="nowrap"
-                     ng-if="section=='image'"></div>
+                     ng-if="endpoint=='image'"></div>
                 <div ng-include="'app/templates/subtemplates/image-encoding.html'" class="nowrap"
-                     ng-if="section=='image'||form.subsection=='image'||form.subsection=='image/compare'"></div>
+                     ng-if="endpoint=='image'||form.section=='image'||form.section=='image/compare'"></div>
                 <div ng-include="'app/templates/subtemplates/sparsity.html'" class="clearfix nowrap"
-                     ng-if="section=='expression'||form.subsection=='text/bulk'||form.subsection=='image'||form.subsection=='image/bulk'"></div>
+                     ng-if="endpoint=='expression'||form.section=='text/bulk'||form.section=='image'||form.section=='image/bulk'"></div>
             </div>
-        </section>
+        </endpoint>
         <div ng-include="'app/templates/help-contents.html'" id="help-contents"></div>
     </main>
-    <input type="hidden" name="option" value="{{section}}">
+    <input type="hidden" name="option" value="{{endpoint}}">
     <br>
-    <button type="submit" class="btn" ng-disabled="!form.subsection||!form.retinaName||!form.filterName||!form.body||form.termReq">Get data!</button>
+    <button type="submit" class="btn" ng-disabled="!(form.body&&form.section&&form.filterName&&!form.termReq)">Get data!</button>
 </form>
-<div class="bg-info padding-common pull-left">
-    <div>section: {{section}}</div>
-    <div>form.subsection: {{form.subsection}}</div>
-    <div>form.retinaName: {{form.retinaName}}</div>
-    <div>form.filterName: {{form.filterName}}</div>
+<div class="bg-info padding-common pull-left table">
+    <div ng-repeat="(formField, formVal) in form" tr>
+        <span td><b>{{formField}}</b>:</span>
+        <span td>{{formVal}}</span>
+    </div>
 </div>

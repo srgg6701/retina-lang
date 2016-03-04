@@ -164,6 +164,18 @@ span.glyphicon.glyphicon-question-sign{
 .right-space{
     margin-right: 4px;
 }
+.table{
+    display: table;
+    padding: 4px;
+    width: auto;
+}
+.table [tr]{
+    display: table-row;
+}
+.table [td]{
+    display: table-cell;
+    padding: 4px 8px;
+}
 .text-danger{
     color:red;
 }
