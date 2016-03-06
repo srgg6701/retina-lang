@@ -1,4 +1,4 @@
-app.directive('helpDataSection', function(){
+app.directive('helpDataEndpoint', function(){
     return{
         restrict: 'EA',
         replace: true,

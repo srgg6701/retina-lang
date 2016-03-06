@@ -16,7 +16,7 @@
          ng-if="endpoint=='text'||endpoint=='expression'||endpoint=='compare'||endpoint=='image'||endpoint=='classify'"></div>
     <div ng-include="'app/templates/subtemplates/postags.html'" class="clearfix nowrap" ng-if="form.section=='text/tokenize'"></div>
     <main>
-        <endpoint id="endpoint-api_params">
+        <section id="endpoint-api_params">
             <div class="clearfix">
                 <div ng-include="'app/templates/subtemplates/context-id.html'" class="nowrap" ng-if="form.section=='terms/similar_terms'||form.section=='expressions/similar_terms'||form.section=='expressions/similar_terms/bulk'"></div>
             </div>
@@ -44,7 +44,7 @@
                 <div ng-include="'app/templates/subtemplates/sparsity.html'" class="clearfix nowrap"
                      ng-if="endpoint=='expression'||form.section=='text/bulk'||form.section=='image'||form.section=='image/bulk'"></div>
             </div>
-        </endpoint>
+        </section >
         <div ng-include="'app/templates/help-contents.html'" id="help-contents"></div>
     </main>
     <input type="hidden" name="option" value="{{endpoint}}">

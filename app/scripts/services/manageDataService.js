@@ -41,9 +41,20 @@ app.service('getResponse', function(){
                     console.log('response error', response);
                 }
             },
-            dataKey, innerKey, dataInputArray, dataset, methodName;
+            dataKey, innerKey, dataInputArray,
+            dataset,
+            methodName,
+            // params names
+            context_id='context_id',
+            get_fingerprint='get_fingerprint',
+            max_results='max_results',
+            pos_type='pos_type',
+            sparsity='sparsity',
+            start_index='start_index';
+
         function makeDataSet(){
-            var dataArray=arguments, dataset = {}; //console.log({args:dataArray, length:dataArray.length});
+            var dataArray=arguments[0], dataset = {};
+            console.log({dataArray:dataArray, arguments:arguments});
             for(var i in dataArray){
                 dataKey = dataArray[i].split('_'); //console.log('outer dataKey', dataKey);
                 for(var y=0, k=dataKey.length; y<k; y++){ //console.group('y: ', y);
@@ -69,27 +80,29 @@ app.service('getResponse', function(){
         //
         switch (scope.endpoint) {
             case 'retina': // optional
-                dataset = form.retina_name;
+                //dataset = 'retina_name';
+                dataInputArray=['retina_name'];
                 methodName = 'getRetinas';
                 break;
             // term* block
             case 'term':
+                dataInputArray=['term'];
                 switch (form.section) {
                     case 'terms':
                     case 'terms/contexts':
-                        dataInputArray=['term', 'start_index', 'max_results', 'get_fingerprints'];
+                        dataInputArray.concat([start_index, max_results, get_fingerprint]);
                         methodName = 'get';
                         methodName+=(form.section=='terms')? 'Terms':'ContextsForTerm';
                         break;
                     case 'terms/similar_terms':
-                        dataInputArray=['term','context_id', 'start_index', 'max_results', 'pos_type', 'get_fingerprints'];
+                        dataInputArray.concat([context_id, start_index, max_results, pos_type, get_fingerprint]);
                         methodName = 'getSimilarTermsForTerm';
                         break;
                 }
                 break;
             // text* block
             case 'text':
-                dataset='text'; // optional
+                dataInputArray=['text'];
                 methodName = 'get';
                 switch (scope.section) {
                     case 'text':
@@ -102,41 +115,48 @@ app.service('getResponse', function(){
                         methodName+='getLanguageForText';
                         break;
                     case 'text/tokenize': case 'text/slices': // required: 0
-                        dataInputArray=['text', 'pos_tags'];
+                        dataInputArray.push('pos_tags');
                         methodName+=(form.section=='text/tokenize')? 'TokensForText':'SlicesForText';
                         break;
-                    case 'text/bulk':
-                        dataInputArray=['texts','sparsity'];
+                    case 'text/bulk': /*former texts*/
+                        dataInputArray.push(sparsity);
                         methodName = 'FingerprintsForTexts';
                         break;
                 }
+                break;
             // expression* block
             case 'expression':
-                //dataInputArray=[{'expression'}];
+                var exp, exps;
                 switch (scope.section) {
                     case 'expressions':
-
+                        exp=[sparsity];
                         break;
                     case 'expressions/contexts':
-
+                        exp=[start_index, max_results, get_fingerprint, sparsity];
                         break;
                     case 'expressions/similar_terms':
-
+                        exp=[context_id, start_index, max_results, pos_type, sparsity, get_fingerprint];
                         break;
                     case 'expressions/bulk':
-
+                        exps=[sparsity];
                         break;
                     case 'expressions/contexts/bulk':
-
+                        exps=[start_index, max_results,sparsity, get_fingerprint];
                         break;
                     case 'expressions/similar_terms/bulk':
-
+                        exps=[context_id, start_index, max_results, pos_type, sparsity, get_fingerprint];
                         break;
                 }
-
+                dataset=(exp)? [{expression:makeDataSet(exp)}] : [{expressions:makeDataSet(exps)}];
                 break;
             case 'compare':
 
+                switch (scope.section) {
+                    case 'compare':
+                        break;
+                    case 'compare/bulk':
+                        break;
+                }
                 break;
             case 'image':
 
@@ -146,6 +166,8 @@ app.service('getResponse', function(){
                 break;
         }
         // get data
-        fullClient[methodName](dataInputArray||dataset, responseData);
+        if(dataInputArray) dataset=makeDataSet(dataInputArray);
+        console.log('dataset', dataset);
+        //fullClient[methodName](dataInputArray||dataset, responseData);
     };
 });

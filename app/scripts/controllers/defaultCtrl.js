@@ -14,14 +14,13 @@ app.controller('defaultCtrl', function($scope, $state, $rootScope, manageData){
             $scope.title = $scope.endpoint.charAt(0).toUpperCase() + $scope.endpoint.slice(1);
         });
 });
-app.controller('contentsCtrl', function($scope, $rootScope, selects, manageFormParams, getResponse){
+app.controller('contentsCtrl', function($scope, $rootScope, selects, manageFormParams, getResponse, switchNewTextarea){
     // set section and retina_name defaults
     $scope.form={};
     $scope.helpvisible={};
     var form = $scope.form;
     // watch if the section has been changed
     $scope.$watch('form.section', function(newValue, oldValue){
-        console.log(oldValue+'=>'+newValue);
         if(newValue=='terms'){
             form.termReq=false;
         }else if(newValue=='terms/contexts'||newValue=='terms/similar_terms'){
@@ -32,7 +31,6 @@ app.controller('contentsCtrl', function($scope, $rootScope, selects, manageFormP
     $scope.$watch('form.term', function(newValue, oldValue){
         if(form.section=='terms/contexts'||form.section=='terms/similar_terms')
             form.termReq=!newValue;
-        console.log('2. form.termReq', form.termReq);
     });
 
     $rootScope.$on('$stateChangeStart',
@@ -42,9 +40,20 @@ app.controller('contentsCtrl', function($scope, $rootScope, selects, manageFormP
             manageFormParams.manageFormData($scope);
     });
 
-
     $scope.getRetinaData = function(event){
         //
         getResponse.getResponseData($scope, form);
     };
+
+    $scope.txtBodies=2;
+    $scope.classAdded = switchNewTextarea.classAdded;
+
+    // add field
+    $scope.addTextarea = function(event) {
+        $scope.txtBodies=switchNewTextarea.addTextarea(event,$scope.txtBodies);
+    };
+    // remove field
+    $scope.removeTextarea = function(event){
+        $scope.txtBodies=switchNewTextarea.removeTextarea(event,$scope.txtBodies);
+    }
 });

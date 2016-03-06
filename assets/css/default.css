@@ -100,7 +100,59 @@ span.glyphicon.glyphicon-question-sign{
     min-height:54px;
 }
 
-/* -------------------- */
+/* todo: #params-body * move to separated sheet
+-------------------- */
+#params-body .add-entity,
+#params-body .delete-entity{
+    display: table;
+    float: right;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    position: relative;
+}
+#params-body .add-entity{
+    transform: translateX(-24px);
+}
+#params-body .delete-entity{
+    margin-right: 25px;
+}
+#params-body .add-entity>div:first-child,
+#params-body .delete-entity>div:first-child{
+    border-radius: 50%;
+    color: white;
+    display: inline-block;
+    height: 20px;
+    position: absolute;
+    width: 20px;
+}
+#params-body .add-entity>div:first-child{
+    background-color: #5cb85c;
+}
+#params-body .delete-entity>div:first-child{
+    background-color: rgba(0,0,0,1);
+}
+#params-body .add-entity>div:last-child,
+#params-body .delete-entity>div:last-child{
+    float: left;
+    margin-left: 24px;
+}
+#params-body .add-entity>div:first-child::after,
+#params-body .delete-entity>div:first-child::after{
+    content:'+';
+    display: inline-block;
+    font-weight: bold;
+    font-size: 16px;
+    left: 5.25px;
+    position: absolute;
+    top: -3px;
+    vertical-align: middle;
+}
+#params-body .delete-entity>div:first-child::after{
+    transform: rotate(45deg);
+    top: -2px;
+    left: 6.25px;
+}
+/*-----------------------------*/
 .block{
     display: block;
     float: none;
@@ -287,6 +339,9 @@ span.glyphicon.glyphicon-question-sign{
 #params-body{
     width: 100%;
 }
+#params-body .added{
+    padding-top: 10px;
+}
 #powered{
     bottom: -14px;
     color: #999;
@@ -298,8 +353,9 @@ span.glyphicon.glyphicon-question-sign{
 #pre-raw-data{
     margin-top:15px;
 }
-textarea[name="body"]{
+textarea[name^="text"]{
     float: left;
+    height: 90px;
     width: calc(100% - 24px) !important;
     max-width: 600px !important;
 }
@@ -362,7 +418,7 @@ textarea[name="body"]{
         display: block;
     }
     .form-control{
-        padding-left: 0;
+        padding-left: 4px;
     }
     #params-body{
         clear: both;
@@ -373,8 +429,9 @@ textarea[name="body"]{
     #params-body{
         float: left;
         max-width: calc(100% - 70px);
+        max-width: 600px;
     }
-    textarea[name="body"]{
+    textarea[name^="text"]{
         width: 100%;
     }
 }

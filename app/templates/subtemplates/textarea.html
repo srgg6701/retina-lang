@@ -1,5 +1,20 @@
 <span class="pull-left right-space" ng-class="{'text-danger':!form.body}">Body</span>
 <div id="params-body">
-    <textarea ng-model="form.body" name="body" class="form-control right-space" placeholder="Your input text (UTF-8)"></textarea>
+    <textarea ng-model="form.body" name="text" class="pull-left form-control right-space"
+              placeholder="Your input text (UTF-8)"></textarea>
     <div closehelp="body" helpvsbl="helpvisible['body']"></div>
+    <div id="textareas">
+        <div ng-if="form.section=='expressions/bulk'||form.section=='expressions/contexts/bulk'||form.section=='expressions/similar_terms/bulk'" class="clearfix {{classAdded}}">
+            <textarea name="text2" class="form-control right-space pull-left" placeholder="Your input text (UTF-8)"></textarea>
+        </div>
+        <div ng-if="txtBodies>2" class="delete-entity command" ng-click="removeTextarea($event)">
+            <div></div>
+            <div>Remove text field</div>
+        </div>
+        <div ng-if="form.section=='expressions/bulk'||form.section=='expressions/contexts/bulk'||form.section=='expressions/similar_terms/bulk'"
+             class="add-entity command" ng-click="addTextarea($event)">
+            <div></div>
+            <div>Add text field</div>
+        </div>
+    </div>
 </div>
