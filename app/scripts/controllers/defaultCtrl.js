@@ -14,7 +14,7 @@ app.controller('defaultCtrl', function($scope, $state, $rootScope, manageData){
             $scope.title = $scope.endpoint.charAt(0).toUpperCase() + $scope.endpoint.slice(1);
         });
 });
-app.controller('contentsCtrl', function($scope, $rootScope, selects, manageFormParams, getResponse, switchNewTextarea){
+app.controller('contentsCtrl', function($scope, $rootScope, /*$timeout,*/ selects, manageFormParams, getResponse, switchNewTextarea){
     // set section and retina_name defaults
     $scope.form={};
     $scope.helpvisible={};
@@ -40,20 +40,19 @@ app.controller('contentsCtrl', function($scope, $rootScope, selects, manageFormP
             manageFormParams.manageFormData($scope);
     });
 
-    $scope.getRetinaData = function(event){
-        //
+    $scope.getRetinaData = function(){
+        // get data
         getResponse.getResponseData($scope, form);
     };
 
-    $scope.txtBodies=2;
-    $scope.classAdded = switchNewTextarea.classAdded;
-
+    $scope.txtBodies=[1]; // in order to ensure ng-repeat
+    $scope.txtFadedIn=1;
     // add field
-    $scope.addTextarea = function(event) {
-        $scope.txtBodies=switchNewTextarea.addTextarea(event,$scope.txtBodies);
+    $scope.addTextarea = function() {
+        $scope=switchNewTextarea.addTextarea($scope);
     };
     // remove field
-    $scope.removeTextarea = function(event){
-        $scope.txtBodies=switchNewTextarea.removeTextarea(event,$scope.txtBodies);
+    $scope.removeTextarea = function(){
+        $scope=switchNewTextarea.removeTextarea($scope);
     }
 });

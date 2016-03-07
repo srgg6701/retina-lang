@@ -1,28 +1,25 @@
-app.service('switchNewTextarea', function(){
-    var dur=300, service=this;
-    this.classAdded = 'added';
-    // get last added container
-    function getTargetContainer(){
-        return angular.element('#textareas').find('.'+service.classAdded).last();
-    }
+"use strict";
+
+app.service('switchNewTextarea', function($timeout){
+    var dur=300;
     // add textarea
-    this.addTextarea = function(event, txtBodiesCnt){
-        txtBodiesCnt++;
-        var txtArea = getTargetContainer(),
-            newTxtArea = txtArea.clone();
-        newTxtArea.hide();
-        newTxtArea.find('textarea').attr('name', 'text'+txtBodiesCnt);
-        txtArea.after(newTxtArea);
-        newTxtArea.fadeIn(dur);
-        return txtBodiesCnt;
+    this.addTextarea = function(scope){
+        scope.txtBodies.push(scope.txtBodies.length+1);
+        $timeout(function(){
+            scope.txtFadedIn=scope.txtBodies.length;
+        },0);
+        return scope;
     };
     // remove textarea
-    this.removeTextarea = function(event, txtBodiesCnt){
-        txtBodiesCnt--;
-        var container=getTargetContainer();
-        container.fadeOut(dur, function(){
-            container.remove();
+    this.removeTextarea = function(scope){
+        scope.txtFadedIn--;
+        var txtArea = angular.element('[name="text'+scope.txtBodies.length+'"]');
+        txtArea.fadeOut(dur, function(){
+            txtArea.remove();
         });
-        return txtBodiesCnt;
+        $timeout(function(){
+            scope.txtBodies.length--;
+        },dur);
+        return scope;
     }
 });

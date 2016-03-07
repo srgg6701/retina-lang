@@ -142,7 +142,7 @@ span.glyphicon.glyphicon-question-sign{
     display: inline-block;
     font-weight: bold;
     font-size: 16px;
-    left: 5.25px;
+    left: 5px;
     position: absolute;
     top: -3px;
     vertical-align: middle;
@@ -150,7 +150,7 @@ span.glyphicon.glyphicon-question-sign{
 #params-body .delete-entity>div:first-child::after{
     transform: rotate(45deg);
     top: -2px;
-    left: 6.25px;
+    left: 6px;
 }
 /*-----------------------------*/
 .block{
@@ -180,6 +180,10 @@ span.glyphicon.glyphicon-question-sign{
 }
 .color-header{
     color:#337ab7;
+}
+.fade-in{
+    transition: opacity 1s ease !important;
+    opacity: 1 !important;
 }
 .form-control{
     display: inline-block;
@@ -340,7 +344,6 @@ span.glyphicon.glyphicon-question-sign{
     width: 100%;
 }
 #params-body .added{
-    padding-top: 10px;
 }
 #powered{
     bottom: -14px;
@@ -357,7 +360,11 @@ textarea[name^="text"]{
     float: left;
     height: 90px;
     width: calc(100% - 24px) !important;
+    margin-top: 10px;
     max-width: 600px !important;
+}
+#textareas textarea:not(:first-child){
+    opacity: 0.5;
 }
 #top-menu{
     transform: translateY(16px);    
